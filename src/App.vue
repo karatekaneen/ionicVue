@@ -7,10 +7,11 @@
 				href="https://github.com/vuetifyjs/vuetify/releases/latest"
 				color="secondary"
 				target="_blank"
-				text
+				light
 			>
-				<span color="accent" class="mr-2">Latest Release</span>
-				<v-icon>twitter</v-icon>
+				<span color="black">Latest Release</span>
+				<v-icon color="info">pregnant_woman</v-icon>
+				<v-icon color="warning">wc</v-icon>
 			</v-btn>
 		</v-app-bar>
 
