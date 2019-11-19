@@ -1,24 +1,19 @@
 <template>
 	<v-app>
-		<v-app-bar app color="primary" dark>
-			<v-spacer></v-spacer>
-
-			<v-btn
-				href="https://github.com/vuetifyjs/vuetify/releases/latest"
-				color="secondary"
-				target="_blank"
-				light
-			>
-				<span color="black">Latest Release</span>
-				<v-icon color="info">pregnant_woman</v-icon>
-				<v-icon color="warning">wc</v-icon>
-			</v-btn>
-		</v-app-bar>
-
 		<v-content>
-			test
 			<HelloWorld />
 		</v-content>
+		<v-bottom-navigation v-model="bottomNav">
+			<v-btn value="recent">
+				<span>Recent</span>
+				<v-icon>mdi-history</v-icon>
+			</v-btn>
+
+			<v-btn value="favorites">
+				<span>Favorites</span>
+				<v-icon>mdi-heart</v-icon>
+			</v-btn>
+		</v-bottom-navigation>
 	</v-app>
 </template>
 
