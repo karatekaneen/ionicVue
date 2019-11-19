@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Home from '../views/Home.vue'
+import RepoView from '../views/RepoView.vue'
 import { IonicVueRouter } from '@ionic/vue'
 
 Vue.use(IonicVueRouter)
@@ -7,16 +7,16 @@ Vue.use(IonicVueRouter)
 const routes = [
 	{
 		path: '/',
-		name: 'home',
-		component: Home
+		name: 'repos',
+		component: RepoView
 	},
 	{
-		path: '/about',
-		name: 'about',
+		path: '/commits',
+		name: 'commits',
 		// route level code-splitting
 		// this generates a separate chunk (about.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
-		component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+		component: () => import(/* webpackChunkName: "about" */ '../views/CommitView.vue')
 	}
 ]
 

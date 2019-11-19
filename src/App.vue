@@ -1,15 +1,15 @@
 <template>
 	<v-app>
 		<v-content>
-			<HelloWorld />
+			<ion-vue-router />
 		</v-content>
-		<v-bottom-navigation v-model="bottomNav">
-			<v-btn value="recent">
+		<v-bottom-navigation v-model="bottomNav" color="primary">
+			<v-btn to="/" value="repos">
 				<span>Recent</span>
 				<v-icon>mdi-history</v-icon>
 			</v-btn>
 
-			<v-btn value="favorites">
+			<v-btn to="/commits" value="commits">
 				<span>Favorites</span>
 				<v-icon>mdi-heart</v-icon>
 			</v-btn>
@@ -18,17 +18,11 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-
 export default {
 	name: 'App',
 
-	components: {
-		HelloWorld
-	},
-
 	data: () => ({
-		//
+		bottomNav: 'repos'
 	})
 }
 </script>
