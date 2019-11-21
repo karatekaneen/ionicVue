@@ -1,19 +1,19 @@
 <template>
 	<v-app>
-		<v-content>
-			<ion-vue-router />
-		</v-content>
-		<v-bottom-navigation v-model="bottomNav" color="primary">
+		<v-bottom-navigation dark color="primary" style="padding-top: 10px;" v-model="bottomNav">
 			<v-btn to="/" value="repos">
-				<span>Recent</span>
-				<v-icon>mdi-history</v-icon>
+				<span>Repos</span>
+				<v-icon>mdi-heart</v-icon>
 			</v-btn>
 
 			<v-btn to="/commits" value="commits">
-				<span>Favorites</span>
-				<v-icon>mdi-heart</v-icon>
+				<span>Commits</span>
+				<v-icon>mdi-history</v-icon>
 			</v-btn>
 		</v-bottom-navigation>
+		<v-content>
+			<ion-vue-router />
+		</v-content>
 	</v-app>
 </template>
 

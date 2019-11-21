@@ -2,11 +2,16 @@
 	<v-container style="overflow: scroll !important;">
 		<v-card style="padding: 20px; margin: 20px; " v-for="(commit, index) in commits" :key="index">
 			<v-card-title>
-				<v-icon x-large :color="index % 2 === 0 ? 'primary' : 'secondary'">{{getIcon(index)}}</v-icon>
-				{{commit.repoName}}
+				<v-icon x-large :color="index % 2 === 0 ? 'primary' : 'secondary'">{{
+					getIcon(index)
+				}}</v-icon>
+				{{ commit.repoName }}
 			</v-card-title>
-			<v-card-subtitle>{{commit.date.toLocaleDateString()}} - {{commit.date.toLocaleTimeString() }}</v-card-subtitle>
-			<v-card-text>{{commit.message}}</v-card-text>
+			<v-card-subtitle
+				>{{ commit.date.toLocaleDateString() }} -
+				{{ commit.date.toLocaleTimeString() }}</v-card-subtitle
+			>
+			<v-card-text>{{ commit.message }}</v-card-text>
 		</v-card>
 	</v-container>
 </template>
