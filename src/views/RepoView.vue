@@ -1,13 +1,15 @@
 <template>
-	<v-container style="overflow: scroll !important;">
-		<v-card style="padding: 20px; margin: 20px; " v-for="(repo, index) in repos" :key="index">
-			<v-card-title>
-				<v-icon x-large :color="index % 2 === 0 ? 'primary' : 'secondary'">{{
-					getIcon(index)
-				}}</v-icon>
-				{{ repo.name }}
-			</v-card-title>
-		</v-card>
+	<v-container>
+		<div style="overflow-y: auto">
+			<v-card style="padding: 20px; margin: 20px; " v-for="(repo, index) in repos" :key="index">
+				<v-card-title>
+					<v-icon x-large :color="index % 2 === 0 ? 'primary' : 'secondary'">{{
+						getIcon(index)
+					}}</v-icon>
+					{{ repo.name }}
+				</v-card-title>
+			</v-card>
+		</div>
 	</v-container>
 </template>
 

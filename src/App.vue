@@ -1,5 +1,8 @@
 <template>
 	<v-app>
+		<v-content>
+			<ion-vue-router />
+		</v-content>
 		<v-bottom-navigation dark color="primary" style="padding-top: 10px;" v-model="bottomNav">
 			<v-btn to="/" value="repos">
 				<span>Repos</span>
@@ -11,9 +14,6 @@
 				<v-icon>mdi-history</v-icon>
 			</v-btn>
 		</v-bottom-navigation>
-		<v-content>
-			<ion-vue-router />
-		</v-content>
 	</v-app>
 </template>
 

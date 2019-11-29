@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 module.exports = {
 	transpileDependencies: ['vuetify'],
-	publicPath: process.env.NODE_ENV === 'production' ? '/~roba0007/' : '/',
+	publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
 	pwa: {
 		name: 'Busy Beaver',
 		themeColor: '#9b1d20',

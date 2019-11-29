@@ -1,0 +1,8 @@
+{
+	"appId": "se.bauhn.awaker",
+	"appName": "Awaker",
+	"bundledWebRuntime": false,
+	"npmClient": "npm",
+	"webDir": "dist",
+	"cordova": {}
+}
