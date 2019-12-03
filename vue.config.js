@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
 module.exports = {
 	transpileDependencies: ['vuetify'],
-	publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
-	pwa: {
+	publicPath: process.env.NODE_ENV === 'production' ? '/' : '/'
+	/* pwa: {
 		name: 'Busy Beaver',
 		themeColor: '#9b1d20',
 		msTileColor: '#9b1d20',
@@ -179,5 +179,5 @@ module.exports = {
 			start_url: '.',
 			display: 'standalone'
 		}
-	}
+	} */
 }
