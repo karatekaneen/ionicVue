@@ -18,11 +18,16 @@
 </template>
 
 <script>
+import { Plugins } from '@capacitor/core'
+const { SplashScreen } = Plugins
 export default {
 	name: 'App',
 
 	data: () => ({
 		bottomNav: 'repos'
-	})
+	}),
+	mounted() {
+		SplashScreen.hide() // Hide the splashscreen as soon as component is mounted
+	}
 }
 </script>
