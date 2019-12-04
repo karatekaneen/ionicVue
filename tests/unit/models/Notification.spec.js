@@ -75,13 +75,13 @@ it('Generates Schedule object from object', () => {
 	const n = new Notification()
 
 	const scheduleOnMinute = {
-		// To schedule every minute. Guess hour and seconds should be valid too.
+		//* To schedule every minute. Guess hour and seconds should be valid too.
 		on: {
 			minute: new Date().getUTCMinutes() + 1
 		}
 	}
 
-	// To notify in intervals
+	//* To notify in intervals
 	const scheduleEvery = {
 		every: 'minute'
 	}
