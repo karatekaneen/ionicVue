@@ -22,6 +22,7 @@ class Journey {
 		) {
 			throw new Error('Missing required parameters')
 		}
+
 		this.startLocation = startLocation
 		this.currentLocation = startLocation
 		this.targetLocation = targetLocation
@@ -35,6 +36,8 @@ class Journey {
 			this.initialDistance = initialDistance
 			this.currentDistance = initialDistance
 			this.triggerDistance = initialDistance - threshold
+
+			this.startedAt = Date.now()
 		}
 	}
 
