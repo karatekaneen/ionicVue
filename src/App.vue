@@ -3,26 +3,20 @@
 		<v-content class="app">
 			<ion-vue-router />
 		</v-content>
-		<v-bottom-navigation
-			class="bottom-nav"
-			dark
-			color="primary"
-			style="padding-top: 10px;"
-			v-model="bottomNav"
-		>
-			<v-btn to="/" value="repos">
-				<span>Repos</span>
-				<v-icon>mdi-heart</v-icon>
+		<v-bottom-navigation class="bottom-nav" dark shift color="primary" v-model="bottomNav">
+			<v-btn icon class="bottom-nav-button" to="/" value="repos">
+				<span>Destination</span>
+				<v-icon>map</v-icon>
 			</v-btn>
 
-			<v-btn to="/commits" value="commits">
-				<span>Commits</span>
-				<v-icon>mdi-history</v-icon>
+			<v-btn icon class="bottom-nav-button" to="/settings" value="settings">
+				<span>Settings</span>
+				<v-icon>settings</v-icon>
 			</v-btn>
 
-			<v-btn to="/intransit" value="inTransit">
-				<span>Commits</span>
-				<v-icon>mdi-commute</v-icon>
+			<v-btn icon class="bottom-nav-button" to="/intransit" value="inTransit">
+				<span>Journey</span>
+				<v-icon>commute</v-icon>
 			</v-btn>
 		</v-bottom-navigation>
 	</v-app>
@@ -38,35 +32,52 @@ export default {
 		bottomNav: 'repos'
 	}),
 	mounted() {
-		SplashScreen.hide() // Hide the splashscreen as soon as component is mounted
-		LocalNotifications.registerActionTypes({
-			types: [
-				{
-					id: 'OPEN_PRODUCT',
-					actions: [
-						{
-							id: 'view',
-							title: 'Product'
-						},
-						{
-							id: 'remove',
-							title: 'Remove',
-							destructive: true
-						},
-						{
-							id: 'response',
-							title: 'Response',
-							input: true
-						}
-					]
-				}
-			]
-		})
+		// LocalNotifications.registerActionTypes({
+		// 	types: [
+		// 		{
+		// 			id: 'OPEN_PRODUCT',
+		// 			actions: [
+		// 				{
+		// 					id: 'view',
+		// 					title: 'Product'
+		// 				},
+		// 				{
+		// 					id: 'remove',
+		// 					title: 'Remove',
+		// 					destructive: true
+		// 				},
+		// 				{
+		// 					id: 'response',
+		// 					title: 'Response',
+		// 					input: true
+		// 				}
+		// 			]
+		// 		}
+		// 	]
+		// })
 	}
 }
 </script>
 
 <style>
+/* Basic card to be used in the whole application, put it in the root to enable cascading */
+.info-card {
+	margin: auto;
+
+	padding: 25px 25px;
+	border-radius: 30px !important; /* Must use important to override vuetify's settings */
+	width: 70%;
+	text-align: center;
+}
+
+.secondary-opaque {
+	background-color: rgba(247, 248, 247, 1) !important;
+}
+
+.secondary-translucent {
+	background-color: rgba(247, 248, 247, 0.3) !important;
+}
+
 .app {
 	background: rgb(43, 66, 78);
 	background: linear-gradient(180deg, rgba(43, 66, 78, 1) 45%, rgba(28, 42, 50, 1) 100%);
@@ -80,5 +91,9 @@ export default {
 
 .bottom-nav {
 	background-color: #202020 !important;
+}
+
+.bottom-nav-button {
+	height: 100% !important;
 }
 </style>

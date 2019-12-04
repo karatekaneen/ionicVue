@@ -1,5 +1,5 @@
 <template>
-	<v-card class="info-card">
+	<v-card class="info-card secondary-translucent">
 		<div class="progress-info">
 			<v-progress-circular
 				:rotate="270"
@@ -12,12 +12,10 @@
 			</v-progress-circular>
 		</div>
 		<div>
-			<span class="primary--text title"> {{ distanceLeft }}km </span>
+			<span class="primary--text title">{{ distanceLeft }}km</span>
 		</div>
 		<div>
-			<span class="primary--text title">
-				{{ timeElapsed }}
-			</span>
+			<span class="primary--text title">{{ timeElapsed }}</span>
 		</div>
 		<v-btn outlined fab x-large @click="cancelJourney" class="cancel-button">
 			<v-icon>mdi-close</v-icon>
@@ -44,15 +42,6 @@ export default {
 </script>
 
 <style scoped>
-.info-card {
-	margin: auto;
-	background-color: rgba(247, 248, 247, 0.24);
-
-	padding: 25px 25px;
-	border-radius: 50px !important; /* Must use important to override vuetify's settings */
-	width: 70%;
-	text-align: center;
-}
 .progress-info {
 	padding-top: 1em;
 	padding-bottom: 1em;
