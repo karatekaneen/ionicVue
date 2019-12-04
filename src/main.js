@@ -6,7 +6,6 @@ import store from './store'
 import Ionic from '@ionic/vue'
 import '@ionic/core/css/ionic.bundle.css'
 import vuetify from './plugins/vuetify'
-import './registerServiceWorker'
 
 Vue.config.ignoredElements = [/^ion-/, /^jeep-/] // added line
 
