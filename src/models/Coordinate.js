@@ -20,13 +20,18 @@ class Coordinate {
 	setCoordinates(location) {
 		if (location) {
 			const { coords, timestamp } = location
-			this.latitude = coords.latitude
-			this.longitude = coords.longitude
-			this.accuracy = coords.accuracy
-			this.altitude = coords.altitude
-			this.speed = coords.speed
-			this.heading = coords.heading
-			this.timestamp = timestamp
+
+			/*
+			Using fallback to avoid to having pass all the arguments every
+			 time and still keep some old data if it's not overwritten
+			*/
+			this.latitude = coords.latitude || this.latitude || null
+			this.longitude = coords.longitude || this.longitude || null
+			this.accuracy = coords.accuracy || this.accuracy || null
+			this.altitude = coords.altitude || this.altitude || null
+			this.speed = coords.speed || this.speed || null
+			this.heading = coords.heading || this.heading || null
+			this.timestamp = timestamp || this.timestamp || null
 		}
 	}
 
