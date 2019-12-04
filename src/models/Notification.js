@@ -22,7 +22,7 @@ class Notification {
 		id = Math.floor(Math.random() * 100),
 		sound = null,
 		journey = null,
-		actionTypeId = null,
+		actionTypeId = 'DEFAULT',
 		smallIcon = null, // TODO Add default icon
 		extra = null
 	} = {}) {
@@ -40,6 +40,34 @@ class Notification {
 		this.attachments = [journey]
 		this.actionTypeId = actionTypeId
 		this.extra = extra
+	}
+
+	/**
+	 * Get all the types of notifications that will be used in the application.
+	 * @returns {Array<object>} Array of notification types
+	 */
+	static getNotificationTypes() {
+		return [
+			{
+				id: 'DEFAULT',
+				actions: [
+					{
+						id: 'view',
+						title: 'Product'
+					},
+					{
+						id: 'remove',
+						title: 'Remove',
+						destructive: true
+					},
+					{
+						id: 'response',
+						title: 'Response',
+						input: true
+					}
+				]
+			}
+		]
 	}
 
 	/**
