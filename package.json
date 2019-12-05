@@ -14,8 +14,8 @@
 		"ionic:build": "vue-cli-service build",
 		"ionic:serve": "vue-cli-service serve",
 		"test:e2e": "vue-cli-service test:e2e",
-		"test:unit": "vue-cli-service test:unit --verbose",
-		"testwatch": "vue-cli-service test:unit --verbose --watchAll"
+		"test:unit": "vue-cli-service test:unit --verbose --silent",
+		"testwatch": "vue-cli-service test:unit --verbose --silent --watchAll"
 	},
 	"dependencies": {
 		"@capacitor/android": "^1.3.0",
