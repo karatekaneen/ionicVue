@@ -6,7 +6,7 @@
 			<div class="settings-item-container">
 				<span class="overline">Notification distance</span>
 				<!-- :value="threshold"
-					@input="threshold = $event" -->
+				@input="threshold = $event"-->
 				<v-slider
 					v-model="threshold"
 					thumb-label
@@ -45,13 +45,21 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
+	computed: {
+		max() {
+			if (this.currentLocation && this.targetLocation) {
+				return Math.round(this.currentLocation.calculateDistance(this.targetLocation) / 1000)
+			} else return 0
+		},
+		...mapState(['currentLocation', 'targetLocation'])
+	},
 	data() {
 		return {
 			saveLocation: false,
 			locationName: '',
 			min: 0,
-			max: 250,
 			threshold: 100
 		}
 	}
