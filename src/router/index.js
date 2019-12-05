@@ -11,6 +11,14 @@ const routes = [
 		component: RepoView
 	},
 	{
+		path: '/destination',
+		name: 'destination',
+		// route level code-splitting
+		// this generates a separate chunk (about.[hash].js) for this route
+		// which is lazy-loaded when the route is visited.
+		component: () => import(/* webpackChunkName: "about" */ '../views/DestinationView.vue')
+	},
+	{
 		path: '/intransit',
 		name: 'inTransit',
 		// route level code-splitting
@@ -24,7 +32,7 @@ const routes = [
 		// route level code-splitting
 		// this generates a separate chunk (about.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
-		component: () => import(/* webpackChunkName: "about" */ '../views/Settings.vue')
+		component: () => import(/* webpackChunkName: "about" */ '../views/SettingsView.vue')
 	}
 ]
 
