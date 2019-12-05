@@ -12,6 +12,21 @@ class Coordinate {
 	}
 
 	/**
+	 * When storing Coordinates they will be converted to JSON.
+	 * This method helps to build new Coordinate instances like:
+	 *
+	 * ```javascript
+	 * const jsonObject = { latitude: 58, longitude: 12, timestamp: 1234567 }
+	 * const coordinate = new Coordinate(Coordinate.fromJSON(jsonObject))
+	 * ```
+	 * @param {Object} coordinate A Coordinate instance that has been serialized to JSON.
+	 * @returns {Coordinate}
+	 */
+	static fromJSON({ timestamp, ...coords }) {
+		return { timestamp, coords }
+	}
+
+	/**
 	 * Sets the instance's location properties. Used both for creating a new instance and updating data on an existing instance
 	 * @param {Object} location
 	 * @param {Object} location.coords The coordinate object , mainly with the `latitude` and `longitude` props.
@@ -68,6 +83,14 @@ class Coordinate {
 	 */
 	toRadians(degrees) {
 		return degrees * (Math.PI / 180)
+	}
+
+	/**
+	 * Helper method to create object to add markers to the Google map component
+	 * @returns {Object} In the correct form for Google maps
+	 */
+	toMarker() {
+		return { position: { lat: this.latitude, lng: this.longitude } }
 	}
 }
 

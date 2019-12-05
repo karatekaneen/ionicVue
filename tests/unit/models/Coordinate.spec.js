@@ -29,3 +29,29 @@ it('calculates distances between points correctly', () => {
 	expect(c.calculateDistance({ latitude: 58, longitude: 12 })).toBe(15096) // Verified by manual calulation
 	expect(c.calculateDistance({ latitude: 59, longitude: 13 })).toBe(110361) // Verified by manual calulation
 })
+
+it('can be converted to Google maps marker', () => {
+	const testResp = {
+		coords: { latitude: 58.12, longitude: 12.12, accuracy: 25 },
+		timestamp: Date.now()
+	}
+	const c = new Coordinate(testResp).toMarker()
+	expect(c).toEqual({ position: { lat: 58.12, lng: 12.12 } })
+})
+
+it('can be serialized to JSON and back', () => {
+	const testResp = {
+		coords: { latitude: 58.12, longitude: 12.12, accuracy: 25 },
+		timestamp: Date.now()
+	}
+	const c = new Coordinate(testResp)
+	expect(c instanceof Coordinate).toBe(true)
+
+	const copy = JSON.parse(JSON.stringify(c))
+	expect(copy instanceof Coordinate).toBe(false)
+
+	const coord = new Coordinate(Coordinate.fromJSON(copy))
+	expect(coord instanceof Coordinate).toBe(true)
+	expect(coord.latitude).toBe(testResp.coords.latitude)
+	expect(coord.longitude).toBe(testResp.coords.longitude)
+})
