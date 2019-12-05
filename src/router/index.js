@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import RepoView from '../views/RepoView.vue'
+import DestinationView from '../views/DestinationView.vue'
+import InTransit from '../views/InTransit.vue'
+import SettingsView from '../views/SettingsView.vue'
 import { IonicVueRouter } from '@ionic/vue'
 
 Vue.use(IonicVueRouter)
@@ -13,26 +16,17 @@ const routes = [
 	{
 		path: '/destination',
 		name: 'destination',
-		// route level code-splitting
-		// this generates a separate chunk (about.[hash].js) for this route
-		// which is lazy-loaded when the route is visited.
-		component: () => import(/* webpackChunkName: "about" */ '../views/DestinationView.vue')
+		component: DestinationView
 	},
 	{
 		path: '/intransit',
 		name: 'inTransit',
-		// route level code-splitting
-		// this generates a separate chunk (about.[hash].js) for this route
-		// which is lazy-loaded when the route is visited.
-		component: () => import(/* webpackChunkName: "about" */ '../views/InTransit.vue')
+		component: InTransit
 	},
 	{
 		path: '/settings',
 		name: 'settings',
-		// route level code-splitting
-		// this generates a separate chunk (about.[hash].js) for this route
-		// which is lazy-loaded when the route is visited.
-		component: () => import(/* webpackChunkName: "about" */ '../views/SettingsView.vue')
+		component: SettingsView
 	}
 ]
 
