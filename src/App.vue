@@ -41,8 +41,6 @@
 </template>
 
 <script>
-import { Plugins } from '@capacitor/core'
-const { SplashScreen, LocalNotifications } = Plugins
 export default {
 	name: 'App',
 
@@ -50,6 +48,7 @@ export default {
 		bottomNav: 'repos'
 	}),
 	mounted() {
+		this.$store.dispatch('retrieveCurrentLocation')
 		// LocalNotifications.registerActionTypes({
 		// 	types: [
 		// 		{
