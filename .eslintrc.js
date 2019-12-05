@@ -49,12 +49,6 @@ module.exports = {
 				ignoreReadBeforeAssign: false
 			}
 		],
-		camelcase: [
-			2,
-			{
-				properties: 'always'
-			}
-		],
 		'space-before-function-paren': [
 			'error',
 			{
