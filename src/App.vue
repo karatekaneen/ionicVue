@@ -3,18 +3,36 @@
 		<v-content class="app">
 			<ion-vue-router />
 		</v-content>
-		<v-bottom-navigation class="bottom-nav" dark shift color="primary" v-model="bottomNav">
-			<v-btn icon class="bottom-nav-button" to="/" value="repos">
+		<v-bottom-navigation class="bottom-nav" dark grow color="primary" v-model="bottomNav">
+			<v-btn
+				:retain-focus-on-click="true"
+				icon
+				class="bottom-nav-button"
+				to="/destination"
+				value="destination"
+			>
 				<span>Destination</span>
 				<v-icon>map</v-icon>
 			</v-btn>
 
-			<v-btn icon class="bottom-nav-button" to="/settings" value="settings">
+			<v-btn
+				:retain-focus-on-click="true"
+				icon
+				class="bottom-nav-button"
+				to="/settings"
+				value="settings"
+			>
 				<span>Settings</span>
 				<v-icon>settings</v-icon>
 			</v-btn>
 
-			<v-btn icon class="bottom-nav-button" to="/intransit" value="inTransit">
+			<v-btn
+				:retain-focus-on-click="true"
+				icon
+				class="bottom-nav-button"
+				to="/intransit"
+				value="inTransit"
+			>
 				<span>Journey</span>
 				<v-icon>commute</v-icon>
 			</v-btn>
