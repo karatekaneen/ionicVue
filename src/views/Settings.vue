@@ -1,24 +1,33 @@
 <template>
 	<div class="d-flex view">
 		<v-card class="info-card secondary-opaque settings-container">
-			<v-card-title>Settings</v-card-title>
+			<v-card-title class="info-card-header font-weight-thin">Settings</v-card-title>
 			<v-card-text>
-				{{threshold}}
-				Här ska det var inställningar
 				<!-- using :value & @input because v-model isn't implemented fully yet. -->
-				<v-slider
-					:value="threshold"
-					@input="threshold = $event"
-					thumb-label
-					:max="max"
-					:min="min"
-					hide-details
-					class="align-center"
-				></v-slider>
+				<div class="settings-item-container">
+					<span class="overline">Notification distance</span>
+					<v-slider
+						:value="threshold"
+						@input="threshold = $event"
+						thumb-label
+						:max="max"
+						:min="min"
+						hide-details
+						class="align-center slider"
+					>
+						<template v-slot:append>
+							<span class="overline">{{threshold}}km</span>
+						</template>
+					</v-slider>
+				</div>
 			</v-card-text>
-			<div>
-				<v-btn fab outlined>abort</v-btn>
-				<v-btn fab outlined>Start</v-btn>
+			<div class="button-container">
+				<v-btn fab outlined>
+					<v-icon>keyboard_arrow_left</v-icon>
+				</v-btn>
+				<v-btn fab outlined>
+					<v-icon>keyboard_arrow_right</v-icon>
+				</v-btn>
 			</div>
 		</v-card>
 	</div>
@@ -37,7 +46,19 @@ export default {
 </script>
 
 <style scoped>
+.button-container {
+	align-items: flex-end;
+	justify-content: space-evenly;
+	display: flex;
+}
+
+.settings-item-container {
+	letter-spacing: 0;
+	text-align: start;
+}
+
 .settings-container {
 	height: 70%;
+	display: grid;
 }
 </style>

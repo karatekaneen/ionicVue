@@ -70,6 +70,10 @@ export default {
 	text-align: center;
 }
 
+.info-card-header {
+	text-align: center;
+}
+
 .secondary-opaque {
 	background-color: rgba(247, 248, 247, 1) !important;
 }

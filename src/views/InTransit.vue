@@ -19,11 +19,10 @@ export default {
 	data() {
 		return {
 			config: {
-				// TODO Gör om till vita snöflingor
-				num: [2, 5],
+				num: [1, 5],
 				rps: 0.99,
 				radius: [5, 40],
-				life: [1.5, 4],
+				life: [1.5, 10],
 				v: [0.5, 1.5],
 				tha: [180, 180],
 				body: icon,
