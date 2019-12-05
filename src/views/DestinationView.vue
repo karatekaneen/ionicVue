@@ -1,12 +1,12 @@
 <template>
 	<div class="d-flex view" style="padding: 10px;">
-		<v-card class=" info-card map-container secondary-opaque">
+		<v-card class="info-card map-container secondary-opaque">
 			<!-- map-type-id="terrain" -->
 			<GmapMap
 				:center="center"
 				:zoom="7"
 				:options="{
-					zoomControl: false,
+					zoomControl: true,
 					mapTypeControl: false,
 					scaleControl: false,
 					streetViewControl: false,
@@ -23,20 +23,17 @@
 			</GmapMap>
 
 			<div class="d-flex" style="justify-content: center;">
-				<v-select
-					disabled=""
-					:items="favoritePlaces"
-					class="favorite-selector"
-					label="Favorites"
-				></v-select>
+				<v-select disabled :items="favoritePlaces" class="favorite-selector" label="Favorites"></v-select>
 			</div>
 
 			<v-card-actions>
-				<v-btn fab outlined><v-icon>close</v-icon></v-btn>
+				<v-btn fab outlined>
+					<v-icon>close</v-icon>
+				</v-btn>
 				<v-spacer></v-spacer>
-				<v-btn fab outlined @click="createTargetCoordinates"
-					><v-icon>keyboard_arrow_right</v-icon></v-btn
-				>
+				<v-btn fab outlined @click="createTargetCoordinates">
+					<v-icon>keyboard_arrow_right</v-icon>
+				</v-btn>
 			</v-card-actions>
 		</v-card>
 	</div>
