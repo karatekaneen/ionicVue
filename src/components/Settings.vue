@@ -20,6 +20,18 @@
 					</template>
 				</v-slider>
 			</div>
+			<div class="settings-item-container">
+				<v-checkbox v-model="saveLocation" label="Save location"></v-checkbox>
+			</div>
+			<div class="settings-item-container">
+				<v-text-field
+					label="Location name"
+					:disabled="!saveLocation"
+					v-model="locationName"
+					style="width: 60%;"
+					outlined
+				></v-text-field>
+			</div>
 		</v-card-text>
 		<div class="button-container">
 			<v-btn fab outlined>
@@ -36,7 +48,9 @@
 export default {
 	data() {
 		return {
-			min: -100,
+			saveLocation: false,
+			locationName: '',
+			min: 0,
 			max: 250,
 			threshold: 100
 		}
