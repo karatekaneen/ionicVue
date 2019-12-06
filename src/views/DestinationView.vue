@@ -76,10 +76,29 @@ export default {
 		}
 	},
 	methods: {
+		/**
+		 * Method to move the marker on the map and update the local variable.
+		 *
+		 * This version currently only supports one marker but in following
+		 * versions favorites and current positions will be shown on the map as well.
+		 *
+		 * @todo add support for more markers
+		 * @param {Object} MapCenter The object of the center of the map
+		 * @param {Function} MapCenter.lat Returns the latitude of the map center
+		 * @param {Function} MapCenter.lng Returns the longitude of the map center
+		 * @returns {void}
+		 */
 		moveMarker({ lat, lng }) {
 			this.markers[0].position = { lat: lat(), lng: lng() }
 		},
 
+		/**
+		 * Creates a `Coordinate` instance from the marker and saves it as the
+		 * destination (targetLocation) to the store.
+		 *
+		 * @todo remove hardcoded values
+		 * @returns {Coordinate} The Coordinate instance
+		 */
 		createTargetCoordinates() {
 			const coordinate = new Coordinate({
 				coords: {
@@ -93,6 +112,13 @@ export default {
 			return coordinate
 		},
 
+		/**
+		 * This method is used to load the initial marker on the map.
+		 * If we open the component fresh the current position is used as
+		 * the first marker but if we come back and already have a targetLocation
+		 * set that will be used.
+		 * @returns {void}
+		 */
 		loadCurrentTarget() {
 			const targetLocation = this.$store.state.targetLocation
 			const currentLocation = this.$store.state.currentLocation
