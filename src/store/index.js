@@ -74,7 +74,10 @@ export default new Vuex.Store({
 		 */
 		createLocationListener({ commit, state }) {
 			const wait = Geolocation.watchPosition({}, (position, err) => {
-				if (err) throw err
+				if (err) {
+					console.error(err)
+					throw err
+				}
 				console.log(position)
 
 				// Update current location in state
