@@ -4,18 +4,18 @@
 			<v-progress-circular
 				:rotate="270"
 				:size="200"
-				:value="progressPercent"
+				:value="progress.progressPercent"
 				:width="40"
 				color="primary"
 			>
-				<div class="display-1 font-weight-black">{{ progressPercent }}%</div>
+				<div class="display-1 font-weight-black">{{ progress.progressPercent }}%</div>
 			</v-progress-circular>
 		</div>
 		<div>
-			<span class="primary--text title">{{ distanceLeft }}km</span>
+			<span class="primary--text title">{{ progress.distanceLeft }}km</span>
 		</div>
 		<div>
-			<span class="primary--text title">{{ timeElapsed }}</span>
+			<span class="primary--text title">{{ progress.timeElapsed }}</span>
 		</div>
 		<v-btn outlined fab x-large @click="cancelJourney" class="cancel-button">
 			<v-icon>mdi-close</v-icon>
@@ -24,19 +24,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-	data() {
-		return {
-			progressPercent: 27,
-			distanceLeft: 302,
-			timeElapsed: '01:23'
-		}
-	},
+	computed: { ...mapState(['progress']) },
 	methods: {
-		cancelJourney() {
-			this.progressPercent++
-			this.distanceLeft--
-		}
+		cancelJourney() {}
 	}
 }
 </script>
@@ -49,10 +41,5 @@ export default {
 .cancel-button {
 	margin-top: 3em;
 	margin-bottom: 2em;
-}
-
-.info-card-content {
-	/* color: rgba(0, 0, 0, 1); */
-	/* opacity: 1; */
 }
 </style>

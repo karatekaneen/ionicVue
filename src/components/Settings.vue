@@ -37,7 +37,7 @@
 			<v-btn fab outlined>
 				<v-icon>keyboard_arrow_left</v-icon>
 			</v-btn>
-			<v-btn fab outlined>
+			<v-btn fab outlined @click="createJourney">
 				<v-icon>keyboard_arrow_right</v-icon>
 			</v-btn>
 		</div>
@@ -61,6 +61,16 @@ export default {
 			locationName: '',
 			min: 0,
 			threshold: 100
+		}
+	},
+	methods: {
+		createJourney() {
+			this.$store.dispatch('createJourney', {
+				currentLocation: this.currentLocation,
+				targetLocation: this.targetLocation,
+				threshold: this.threshold,
+				max: this.max
+			})
 		}
 	}
 }

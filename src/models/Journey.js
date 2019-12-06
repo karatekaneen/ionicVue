@@ -61,7 +61,26 @@ class Journey {
 		const threshold = this.triggerDistance / this.initialDistance
 		const current = 1 - this.currentDistance / this.initialDistance
 
-		return { threshold, current, shouldNotify: current >= threshold }
+		const progressPercent = Math.round(Math.min(Math.max(current, 0), 1) * 100)
+		const distanceLeft = Math.round(this.currentDistance / 1000)
+
+		const timeDiff = new Date(Date.now() - this.startedAt)
+		const hours = timeDiff.getUTCHours()
+		const minutes = timeDiff.getUTCMinutes()
+		const seconds = timeDiff.getUTCSeconds() // TODO Remove seconds before production
+
+		const readableTime = i => (i < 10 ? '0' + i : i) // Helper methods to make time look nice
+
+		return {
+			progressPercent,
+			distanceLeft,
+			timeElapsed: `${readableTime(hours)}:${readableTime(minutes)}:${readableTime(seconds)}`,
+			threshold,
+			current,
+			shouldNotify: current >= threshold,
+			startedAt: this.startedAt,
+			currentDistance: this.currentDistance
+		}
 	}
 }
 
