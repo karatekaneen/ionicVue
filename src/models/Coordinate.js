@@ -30,7 +30,7 @@ class Coordinate {
 	 * Sets the instance's location properties. Used both for creating a new instance and updating data on an existing instance
 	 * @param {Object} location
 	 * @param {Object} location.coords The coordinate object , mainly with the `latitude` and `longitude` props.
-	 * @returns {void}
+	 * @returns {Coordinate} this
 	 */
 	setCoordinates(location) {
 		if (location) {
@@ -48,6 +48,8 @@ class Coordinate {
 			this.heading = coords.heading || this.heading || null
 			this.timestamp = timestamp || this.timestamp || null
 		}
+
+		return this
 	}
 
 	/**

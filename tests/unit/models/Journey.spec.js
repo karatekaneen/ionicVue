@@ -61,17 +61,27 @@ it('can update current location', () => {
 it('returns the correct progress', () => {
 	const j = new Journey({ startLocation: point1, targetLocation: point3, threshold: 10000 })
 
-	const returnValue = j.setCurrentLocation(point2).getProgress()
+	const { timeElapsed, startedAt, ...returnValue } = j.setCurrentLocation(point2).getProgress()
 	expect(returnValue).toEqual({
 		current: 0.5014641288433381,
+		currentDistance: 123942,
+		distanceLeft: 124,
+		progressPercent: 50,
 		shouldNotify: false,
 		threshold: 0.959776680128071
 	})
 
 	// Override the current distance
 	j.currentDistance = 9999
-	expect(j.getProgress()).toEqual({
+	const newResponse = j.getProgress()
+	delete newResponse.timeElapsed
+	delete newResponse.startedAt
+
+	expect(newResponse).toEqual({
 		current: 0.9597807024600582,
+		currentDistance: 9999,
+		distanceLeft: 10,
+		progressPercent: 96,
 		shouldNotify: true,
 		threshold: 0.959776680128071
 	})
