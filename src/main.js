@@ -33,6 +33,10 @@ Vue.use(VueGoogleMaps, {
  *
  * Material design via vuetify
  *
+ * ### Wireframe of views:
+ *
+ * ![wireframe](https://github.com/karatekaneen/ionicVue/blob/master/docs/AwakerViews.jpg "Wireframe views")
+ *
  * # Usage
  * ## Installation for android
  *

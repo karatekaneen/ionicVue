@@ -6,43 +6,44 @@
 -   [Introduction][2]
     -   [User stories][3]
     -   [Design][4]
--   [Usage][5]
-    -   [Installation for android][6]
-    -   [Installation for web][7]
-    -   [Tests][8]
-    -   [Generate documentation:][9]
-    -   [moveMarker][10]
-        -   [Parameters][11]
-    -   [createTargetCoordinates][12]
-    -   [loadCurrentTarget][13]
-    -   [assignTargetLocation][14]
-        -   [Parameters][15]
-    -   [retrieveCurrentLocation][16]
-        -   [Parameters][17]
-    -   [createJourney][18]
-        -   [Parameters][19]
-    -   [createLocationListener][20]
-        -   [Parameters][21]
-    -   [Coordinate][22]
-        -   [Parameters][23]
-        -   [setCoordinates][24]
-            -   [Parameters][25]
-        -   [calculateDistance][26]
-            -   [Parameters][27]
-        -   [toRadians][28]
-            -   [Parameters][29]
-        -   [toMarker][30]
-        -   [fromJSON][31]
-            -   [Parameters][32]
-    -   [Journey][33]
-        -   [Parameters][34]
-        -   [setCurrentLocation][35]
-            -   [Parameters][36]
-        -   [setThreshold][37]
-            -   [Parameters][38]
-        -   [setTargetLocation][39]
-            -   [Parameters][40]
-        -   [getProgress][41]
+        -   [Wireframe of views:][5]
+-   [Usage][6]
+    -   [Installation for android][7]
+    -   [Installation for web][8]
+    -   [Tests][9]
+    -   [Generate documentation:][10]
+    -   [moveMarker][11]
+        -   [Parameters][12]
+    -   [createTargetCoordinates][13]
+    -   [loadCurrentTarget][14]
+    -   [assignTargetLocation][15]
+        -   [Parameters][16]
+    -   [retrieveCurrentLocation][17]
+        -   [Parameters][18]
+    -   [createJourney][19]
+        -   [Parameters][20]
+    -   [createLocationListener][21]
+        -   [Parameters][22]
+    -   [Coordinate][23]
+        -   [Parameters][24]
+        -   [setCoordinates][25]
+            -   [Parameters][26]
+        -   [calculateDistance][27]
+            -   [Parameters][28]
+        -   [toRadians][29]
+            -   [Parameters][30]
+        -   [toMarker][31]
+        -   [fromJSON][32]
+            -   [Parameters][33]
+    -   [Journey][34]
+        -   [Parameters][35]
+        -   [setCurrentLocation][36]
+            -   [Parameters][37]
+        -   [setThreshold][38]
+            -   [Parameters][39]
+        -   [setTargetLocation][40]
+            -   [Parameters][41]
+        -   [getProgress][42]
 
 ## Awake
 
@@ -57,6 +58,10 @@ It wakes people up so they don't wake up in Flen.
 ## Design
 
 Material design via vuetify
+
+### Wireframe of views:
+
+![wireframe][43]
 
 # Usage
 
@@ -100,9 +105,9 @@ versions favorites and current positions will be shown on the map as well.
 
 ### Parameters
 
--   `MapCenter` **[Object][42]** The object of the center of the map
-    -   `MapCenter.lat` **[Function][43]** Returns the latitude of the map center
-    -   `MapCenter.lng` **[Function][43]** Returns the longitude of the map center
+-   `MapCenter` **[Object][44]** The object of the center of the map
+    -   `MapCenter.lat` **[Function][45]** Returns the latitude of the map center
+    -   `MapCenter.lng` **[Function][45]** Returns the longitude of the map center
 
 Returns **void** 
 
@@ -111,7 +116,7 @@ Returns **void**
 Creates a `Coordinate` instance from the marker and saves it as the
 destination (targetLocation) to the store.
 
-Returns **[Coordinate][44]** The Coordinate instance
+Returns **[Coordinate][46]** The Coordinate instance
 
 ## loadCurrentTarget
 
@@ -129,10 +134,10 @@ journey active it will be updated as well.
 
 ### Parameters
 
--   `context` **[Object][42]** 
+-   `context` **[Object][44]** 
     -   `context.commit`  
     -   `context.state`  
--   `coordinate` **[Coordinate][44]** The target location
+-   `coordinate` **[Coordinate][46]** The target location
 
 ## retrieveCurrentLocation
 
@@ -141,7 +146,7 @@ and assigns the `currentLocation` prop.
 
 ### Parameters
 
--   `context` **[Object][42]** 
+-   `context` **[Object][44]** 
     -   `context.commit`  
 
 ## createJourney
@@ -153,17 +158,17 @@ from the `max` value to get the distance to notify at.
 
 ### Parameters
 
--   `context` **[Object][42]** The store
+-   `context` **[Object][44]** The store
     -   `context.commit`  
     -   `context.dispatch`  
     -   `context.state`  
--   `journey` **[Object][42]** The Journey settings deconstructed
-    -   `journey.currentLocation` **[Coordinate][44]** 
-    -   `journey.targetLocation` **[Coordinate][44]** 
-    -   `journey.threshold` **[number][45]** 
-    -   `journey.max` **[number][45]** 
+-   `journey` **[Object][44]** The Journey settings deconstructed
+    -   `journey.currentLocation` **[Coordinate][46]** 
+    -   `journey.targetLocation` **[Coordinate][46]** 
+    -   `journey.threshold` **[number][47]** 
+    -   `journey.max` **[number][47]** 
 
-Returns **[Journey][46]** the Journey instance.
+Returns **[Journey][48]** the Journey instance.
 
 ## createLocationListener
 
@@ -173,7 +178,7 @@ It then updates the state props `currentLocation`, `currentJourney` and `progres
 
 ### Parameters
 
--   `context` **[Object][42]** 
+-   `context` **[Object][44]** 
     -   `context.commit`  
     -   `context.state`  
 
@@ -185,7 +190,7 @@ Class for coordinate points with some helper methods to do some calculations suc
 
 ### Parameters
 
--   `locationResponse` **[Object][42]** The response from the native GPS. If coordinates originates from different source they need to be converted to fit the input
+-   `locationResponse` **[Object][44]** The response from the native GPS. If coordinates originates from different source they need to be converted to fit the input
 
 ### setCoordinates
 
@@ -193,39 +198,39 @@ Sets the instance's location properties. Used both for creating a new instance a
 
 #### Parameters
 
--   `location` **[Object][42]** 
-    -   `location.coords` **[Object][42]** The coordinate object , mainly with the `latitude` and `longitude` props.
+-   `location` **[Object][44]** 
+    -   `location.coords` **[Object][44]** The coordinate object , mainly with the `latitude` and `longitude` props.
 
-Returns **[Coordinate][44]** this
+Returns **[Coordinate][46]** this
 
 ### calculateDistance
 
 Calculates the distance between two coordinate points.
-Calculation and code found at [this link][47]
+Calculation and code found at [this link][49]
 
 #### Parameters
 
--   `coordinate1` **[Coordinate][44]** The target coordinates
--   `coordinate2` **[Coordinate][44]** The current coordinates, defaults to this. (optional, default `this`)
+-   `coordinate1` **[Coordinate][46]** The target coordinates
+-   `coordinate2` **[Coordinate][46]** The current coordinates, defaults to this. (optional, default `this`)
 
-Returns **[number][45]** Distance in meters?
+Returns **[number][47]** Distance in meters?
 
 ### toRadians
 
 Helper method to convert degrees to radians, which is a different kind of degrees.
-formula found at [this link][48]
+formula found at [this link][50]
 
 #### Parameters
 
--   `degrees` **[number][45]** Degrees that should be converted to radians
+-   `degrees` **[number][47]** Degrees that should be converted to radians
 
-Returns **[number][45]** degrees converted to radians
+Returns **[number][47]** degrees converted to radians
 
 ### toMarker
 
 Helper method to create object to add markers to the Google map component
 
-Returns **[Object][42]** In the correct form for Google maps
+Returns **[Object][44]** In the correct form for Google maps
 
 ### fromJSON
 
@@ -239,11 +244,11 @@ const coordinate = new Coordinate(Coordinate.fromJSON(jsonObject))
 
 #### Parameters
 
--   `coordinate` **[Object][42]** A Coordinate instance that has been serialized to JSON.
+-   `coordinate` **[Object][44]** A Coordinate instance that has been serialized to JSON.
     -   `coordinate.timestamp`  
     -   `coordinate.coords` **...any** 
 
-Returns **[Coordinate][44]** 
+Returns **[Coordinate][46]** 
 
 ## Journey
 
@@ -251,11 +256,11 @@ The class that contains all the information for a particular trip
 
 ### Parameters
 
--   `$0` **[Object][42]**  (optional, default `{}`)
+-   `$0` **[Object][44]**  (optional, default `{}`)
     -   `$0.startLocation`  
     -   `$0.targetLocation`  
     -   `$0.threshold`  
--   `params` **[Object][42]** 
+-   `params` **[Object][44]** 
 
 ### setCurrentLocation
 
@@ -263,9 +268,9 @@ Updates the current location and also updates the distance to the destination.
 
 #### Parameters
 
--   `currentLocation` **[Coordinate][44]** The current location
+-   `currentLocation` **[Coordinate][46]** The current location
 
-Returns **[Journey][46]** this
+Returns **[Journey][48]** this
 
 ### setThreshold
 
@@ -273,9 +278,9 @@ Sets the instances threshold
 
 #### Parameters
 
--   `threshold` **[number][45]** The distance from the destination where the notification should be sent
+-   `threshold` **[number][47]** The distance from the destination where the notification should be sent
 
-Returns **[Journey][46]** this
+Returns **[Journey][48]** this
 
 ### setTargetLocation
 
@@ -283,15 +288,15 @@ Sets the instance's target location and calculates `initialDistance` and `curren
 
 #### Parameters
 
--   `target` **[Coordinate][44]** The target location
+-   `target` **[Coordinate][46]** The target location
 
-Returns **[Journey][46]** this
+Returns **[Journey][48]** this
 
 ### getProgress
 
 Get how much of the journey that is complete.
 
-Returns **[Object][42]** `threshold` is the fraction of the trip where the notification should be sent. `current` is the current percentage of the trip that's completed. `shouldNotify` is a bool that notifies if the current distance is less than the threhsold distance
+Returns **[Object][44]** `threshold` is the fraction of the trip where the notification should be sent. `current` is the current percentage of the trip that's completed. `shouldNotify` is a bool that notifies if the current distance is less than the threhsold distance
 
 [1]: #awake
 
@@ -301,90 +306,94 @@ Returns **[Object][42]** `threshold` is the fraction of the trip where the notif
 
 [4]: #design
 
-[5]: #usage
+[5]: #wireframe-of-views
 
-[6]: #installation-for-android
+[6]: #usage
 
-[7]: #installation-for-web
+[7]: #installation-for-android
 
-[8]: #tests
+[8]: #installation-for-web
 
-[9]: #generate-documentation
+[9]: #tests
 
-[10]: #movemarker
+[10]: #generate-documentation
 
-[11]: #parameters
+[11]: #movemarker
 
-[12]: #createtargetcoordinates
+[12]: #parameters
 
-[13]: #loadcurrenttarget
+[13]: #createtargetcoordinates
 
-[14]: #assigntargetlocation
+[14]: #loadcurrenttarget
 
-[15]: #parameters-1
+[15]: #assigntargetlocation
 
-[16]: #retrievecurrentlocation
+[16]: #parameters-1
 
-[17]: #parameters-2
+[17]: #retrievecurrentlocation
 
-[18]: #createjourney
+[18]: #parameters-2
 
-[19]: #parameters-3
+[19]: #createjourney
 
-[20]: #createlocationlistener
+[20]: #parameters-3
 
-[21]: #parameters-4
+[21]: #createlocationlistener
 
-[22]: #coordinate
+[22]: #parameters-4
 
-[23]: #parameters-5
+[23]: #coordinate
 
-[24]: #setcoordinates
+[24]: #parameters-5
 
-[25]: #parameters-6
+[25]: #setcoordinates
 
-[26]: #calculatedistance
+[26]: #parameters-6
 
-[27]: #parameters-7
+[27]: #calculatedistance
 
-[28]: #toradians
+[28]: #parameters-7
 
-[29]: #parameters-8
+[29]: #toradians
 
-[30]: #tomarker
+[30]: #parameters-8
 
-[31]: #fromjson
+[31]: #tomarker
 
-[32]: #parameters-9
+[32]: #fromjson
 
-[33]: #journey
+[33]: #parameters-9
 
-[34]: #parameters-10
+[34]: #journey
 
-[35]: #setcurrentlocation
+[35]: #parameters-10
 
-[36]: #parameters-11
+[36]: #setcurrentlocation
 
-[37]: #setthreshold
+[37]: #parameters-11
 
-[38]: #parameters-12
+[38]: #setthreshold
 
-[39]: #settargetlocation
+[39]: #parameters-12
 
-[40]: #parameters-13
+[40]: #settargetlocation
 
-[41]: #getprogress
+[41]: #parameters-13
 
-[42]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[42]: #getprogress
 
-[43]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[43]: https://github.com/karatekaneen/ionicVue/blob/master/docs/AwakerViews.jpg "Wireframe views"
 
-[44]: #coordinate
+[44]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[45]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[45]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 
-[46]: #journey
+[46]: #coordinate
 
-[47]: https://www.movable-type.co.uk/scripts/latlong.html
+[47]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[48]: https://www.w3resource.com/javascript-exercises/javascript-math-exercise-33.php
+[48]: #journey
+
+[49]: https://www.movable-type.co.uk/scripts/latlong.html
+
+[50]: https://www.w3resource.com/javascript-exercises/javascript-math-exercise-33.php
