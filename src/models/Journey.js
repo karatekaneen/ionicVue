@@ -23,16 +23,17 @@ class Journey {
 			throw new Error('Missing required parameters')
 		}
 
-		this.startLocation = startLocation
-		this.currentLocation = startLocation
-		this.targetLocation = targetLocation
-		this.threshold = threshold
-
 		const initialDistance = startLocation.calculateDistance(targetLocation)
 
 		if (initialDistance <= threshold) {
 			throw new Error('Distance can not be less than the initial distance')
 		} else {
+			this.startLocation = startLocation
+			this.currentLocation = startLocation
+
+			// Assign threshold
+			this.setThreshold(threshold)
+
 			// Assign target location distances etc
 			this.setTargetLocation(targetLocation)
 			// Add timestamp to measure elapsed time
@@ -49,6 +50,20 @@ class Journey {
 		this.currentLocation = currentLocation
 		this.currentDistance = this.targetLocation.calculateDistance(currentLocation)
 
+		return this
+	}
+
+	/**
+	 * Sets the instances threshold
+	 * @param {number} threshold The distance from the destination where the notification should be sent
+	 * @returns {Journey} this
+	 */
+	setThreshold(threshold) {
+		this.threshold = threshold
+
+		if (this.initialDistance) {
+			this.triggerDistance = this.initialDistance - this.threshold
+		}
 		return this
 	}
 

@@ -64,23 +64,39 @@ export default new Vuex.Store({
 		},
 
 		/**
-		 * Creates instance of `Journey` and saves it to the store.
+		 * Creates instance of `Journey` and saves it to the store if there
+		 * is no active journey. If there is a `currentJourney` assigned it is updated.
 		 * The `threshold` variable is converted back to meters and subtracted
 		 * from the `max` value to get the distance to notify at.
 		 * @returns {Journey} the Journey instance.
 		 */
-		createJourney({ commit, dispatch }, { currentLocation, targetLocation, threshold, max }) {
-			const journey = new Journey({
-				startLocation: currentLocation,
-				targetLocation: targetLocation,
-				threshold: (max - threshold) * 1000 // Distance left converted to meters
-			})
+		createJourney(
+			{ commit, dispatch, state },
+			{ currentLocation, targetLocation, threshold, max }
+		) {
+			if (!state.currentJourney) {
+				const journey = new Journey({
+					startLocation: currentLocation,
+					targetLocation: targetLocation,
+					threshold: (max - threshold) * 1000 // Distance left converted to meters
+				})
 
-			console.info('Journey created', journey)
+				console.info('Journey created', journey)
 
-			commit('setCurrentJourney', journey)
-			dispatch('createLocationListener')
-			return journey
+				commit('setCurrentJourney', journey)
+				dispatch('createLocationListener')
+				return journey
+			} else {
+				const journey = state.currentJourney
+
+				journey
+					.setCurrentLocation(currentLocation)
+					.setThreshold((max - threshold) * 1000)
+					.setTargetLocation(targetLocation)
+
+				console.info('Journey updated', journey)
+				return journey
+			}
 		},
 
 		/**
@@ -115,6 +131,5 @@ export default new Vuex.Store({
 			console.info(`Watcher ID:`, wait)
 			commit('setWatcherId', wait)
 		}
-	},
-	modules: {}
+	}
 })
