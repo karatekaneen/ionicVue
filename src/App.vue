@@ -21,6 +21,7 @@
 				class="bottom-nav-button"
 				to="/settings"
 				value="settings"
+				:disabled="!$store.state.targetLocation"
 			>
 				<span>Settings</span>
 				<v-icon>settings</v-icon>
@@ -32,6 +33,7 @@
 				class="bottom-nav-button"
 				to="/intransit"
 				value="inTransit"
+				:disabled="!$store.state.currentJourney"
 			>
 				<span>Journey</span>
 				<v-icon>commute</v-icon>
