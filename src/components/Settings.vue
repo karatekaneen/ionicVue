@@ -34,7 +34,7 @@
 			</div>
 		</v-card-text>
 		<div class="button-container">
-			<v-btn fab outlined>
+			<v-btn fab outlined to="/destination">
 				<v-icon>keyboard_arrow_left</v-icon>
 			</v-btn>
 			<v-btn fab outlined @click="createJourney">
@@ -71,7 +71,12 @@ export default {
 				threshold: this.threshold,
 				max: this.max
 			})
+
+			this.$router.push({ name: 'inTransit' })
 		}
+	},
+	mounted() {
+		this.threshold = Math.floor(this.max * 0.9)
 	}
 }
 </script>
