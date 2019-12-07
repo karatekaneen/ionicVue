@@ -19,15 +19,15 @@ export default {
 	data() {
 		return {
 			config: {
-				num: [1, 5],
+				num: [1, 3],
 				rps: 0.99,
 				radius: [5, 40],
 				life: [1.5, 10],
 				v: [0.5, 1.5],
 				tha: [180, 180],
 				body: icon,
-				alpha: [0.5, 0],
-				scale: [0.02, 0.04],
+				alpha: [0.3, 0],
+				scale: [0.04, 0.02],
 				position: 'all',
 				cross: 'dead',
 				random: 10
