@@ -68,6 +68,8 @@ export default new Vuex.Store({
 		 * is no active journey. If there is a `currentJourney` assigned it is updated.
 		 * The `threshold` variable is converted back to meters and subtracted
 		 * from the `max` value to get the distance to notify at.
+		 * @param {Object} context The store
+		 * @param {Object} journey The Journey settings deconstructed
 		 * @returns {Journey} the Journey instance.
 		 */
 		createJourney(

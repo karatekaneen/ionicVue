@@ -1,5 +1,6 @@
 {
-	"name": "ionicVue",
+	"name": "Awake",
+	"description": "Notifies the user when he/she is a specified distance from their destination to get some time to wake up and not wake up in Flen.",
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
@@ -47,6 +48,7 @@
 		"@vue/eslint-config-standard": "^4.0.0",
 		"@vue/test-utils": "1.0.0-beta.29",
 		"babel-eslint": "^10.0.3",
+		"documentation": "^12.1.4",
 		"eslint": "^5.16.0",
 		"eslint-plugin-prettier": "^3.1.1",
 		"eslint-plugin-promise": "^4.2.1",
