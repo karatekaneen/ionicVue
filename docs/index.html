@@ -26,6 +26,16 @@
               
                 
                 <li><a
+                  href='#awake'
+                  class="">
+                  Awake
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#movemarker'
                   class="">
                   moveMarker
@@ -49,6 +59,16 @@
                   href='#loadcurrenttarget'
                   class="">
                   loadCurrentTarget
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#assigntargetlocation'
+                  class="">
+                  assignTargetLocation
                   
                 </a>
                 
@@ -195,6 +215,74 @@
         </div>
       </div>
       <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='awake'>
+      Awake
+    </h3>
+    
+    
+  </div>
+  
+
+  <h1>Introduction</h1>
+<p>This is my cool introduction</p>
+<h2>User stories</h2>
+<p>It wakes people up so they don't wake up in Flen.</p>
+<h2>Design</h2>
+<p>Material design via vuetify</p>
+<h1>Usage</h1>
+<h2>Installation for android</h2>
+<pre class='hljs'>npm install <span class="hljs-comment"># Install dependencies</span>
+npm run and <span class="hljs-comment"># Run vue build and copy it to capacitor</span>
+npm run capacitor-open <span class="hljs-comment"># Open the capacitor project in Android studio</span></pre>
+<h2>Installation for web</h2>
+<pre class='hljs'>npm install <span class="hljs-comment"># Install dependencies</span>
+npm run serve <span class="hljs-comment"># Run development server</span></pre>
+<h2>Tests</h2>
+<p>Only have unit tests in this project because the native modules was pretty much impossible to do integration testing on.</p>
+<pre class='hljs'>npm run <span class="hljs-built_in">test</span>:unit</pre>
+<h2>Generate documentation:</h2>
+<pre class='hljs'>npm run docs:md <span class="hljs-comment"># for Readme.md</span>
+npm run docs:html <span class="hljs-comment"># for docs/index.html</span>
+npm run docs:full <span class="hljs-comment"># for both of the above.</span></pre>
+
+    <div class='pre p1 fill-light mt0'>Awake</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
         
           
           <section class='p2 mb2 clearfix bg-white minishadow'>
@@ -424,6 +512,109 @@ set that will be used.</p>
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='assigntargetlocation'>
+      assignTargetLocation
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Saves the target location to the store and if there is a
+journey active it will be updated as well.</p>
+
+    <div class='pre p1 fill-light mt0'>assignTargetLocation(context: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, coordinate: <a href="#coordinate">Coordinate</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>context</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>context.commit</span> <code class='quiet'>any</code>
+  </td>
+  <td class='break-word'><span></span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>context.state</span> <code class='quiet'>any</code>
+  </td>
+  <td class='break-word'><span></span></td>
+</tr>
+
+
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>coordinate</span> <code class='quiet'>(<a href="#coordinate">Coordinate</a>)</code>
+	    The target location
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='retrievecurrentlocation'>
       retrieveCurrentLocation
     </h3>
@@ -608,7 +799,7 @@ from the <code>max</code> value to get the distance to notify at.</p>
             <tbody class='mt1'>
               
                 <tr>
-  <td class='break-word'><span class='code bold'>journey.currentLocation</span> <code class='quiet'>any</code>
+  <td class='break-word'><span class='code bold'>journey.currentLocation</span> <code class='quiet'><a href="#coordinate">Coordinate</a></code>
   </td>
   <td class='break-word'><span></span></td>
 </tr>
@@ -616,7 +807,7 @@ from the <code>max</code> value to get the distance to notify at.</p>
 
               
                 <tr>
-  <td class='break-word'><span class='code bold'>journey.targetLocation</span> <code class='quiet'>any</code>
+  <td class='break-word'><span class='code bold'>journey.targetLocation</span> <code class='quiet'><a href="#coordinate">Coordinate</a></code>
   </td>
   <td class='break-word'><span></span></td>
 </tr>
@@ -624,7 +815,7 @@ from the <code>max</code> value to get the distance to notify at.</p>
 
               
                 <tr>
-  <td class='break-word'><span class='code bold'>journey.threshold</span> <code class='quiet'>any</code>
+  <td class='break-word'><span class='code bold'>journey.threshold</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>
   </td>
   <td class='break-word'><span></span></td>
 </tr>
@@ -632,7 +823,7 @@ from the <code>max</code> value to get the distance to notify at.</p>
 
               
                 <tr>
-  <td class='break-word'><span class='code bold'>journey.max</span> <code class='quiet'>any</code>
+  <td class='break-word'><span class='code bold'>journey.max</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>
   </td>
   <td class='break-word'><span></span></td>
 </tr>

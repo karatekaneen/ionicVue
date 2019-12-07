@@ -37,6 +37,13 @@ export default new Vuex.Store({
 		setProgress: (state, progress) => (state.progress = progress)
 	},
 	actions: {
+		/**
+		 * Saves the target location to the store and if there is a
+		 * journey active it will be updated as well.
+		 *
+		 * @param {Object} context
+		 * @param {Coordinate} coordinate The target location
+		 */
 		assignTargetLocation({ commit, state }, coordinate) {
 			commit('setTargetLocation', coordinate)
 
@@ -70,6 +77,10 @@ export default new Vuex.Store({
 		 * from the `max` value to get the distance to notify at.
 		 * @param {Object} context The store
 		 * @param {Object} journey The Journey settings deconstructed
+		 * @param {Coordinate} journey.currentLocation
+		 * @param {Coordinate} journey.targetLocation
+		 * @param {number} journey.threshold
+		 * @param {number} journey.max
 		 * @returns {Journey} the Journey instance.
 		 */
 		createJourney(

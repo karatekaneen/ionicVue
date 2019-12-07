@@ -16,7 +16,10 @@
 		"ionic:serve": "vue-cli-service serve",
 		"test:e2e": "vue-cli-service test:e2e",
 		"test:unit": "vue-cli-service test:unit --verbose --silent",
-		"testwatch": "vue-cli-service test:unit --verbose --silent --watchAll"
+		"testwatch": "vue-cli-service test:unit --verbose --silent --watchAll",
+		"docs:md": "documentation build .\\src\\main.js -o ReadMe.md -f \"md\"",
+		"docs:html": "documentation build .\\src\\main.js -o docs -f \"html\"",
+		"docs:full": "npm run docs:md && npm run docs:html"
 	},
 	"dependencies": {
 		"@capacitor/android": "^1.3.0",
