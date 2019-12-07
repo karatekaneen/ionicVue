@@ -6,7 +6,7 @@
 				:size="200"
 				:value="progress.progressPercent"
 				:width="40"
-				color="primary"
+				:color="progress.shouldNotify ? 'accent' : 'primary'"
 			>
 				<div class="display-1 font-weight-black">{{ progress.progressPercent }}%</div>
 			</v-progress-circular>
