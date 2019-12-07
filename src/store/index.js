@@ -28,13 +28,30 @@ export default new Vuex.Store({
 
 	mutations: {
 		setCurrentLocation: (state, coordinate) => (state.currentLocation = coordinate),
+		// TODO Check if there is a journey and update the destination in that as well.
+		// TODO Move to action as well
 		setTargetLocation: (state, coordinate) => (state.targetLocation = coordinate),
 		setCurrentJourney: (state, journey) => (state.currentJourney = journey),
 		setFavoriteLocations: (state, favorites) => (state.favoriteLocations = favorites),
 		setWatcherId: (state, id) => (state.watcherId = id),
-		setProgress: (state, journey) => (state.progress = journey.getProgress())
+		setProgress: (state, progress) => (state.progress = progress)
 	},
 	actions: {
+		assignTargetLocation({ commit, state }, coordinate) {
+			commit('setTargetLocation', coordinate)
+
+			if (state.currentJourney) {
+				const journey = state.currentJourney
+
+				// Change destination and update state
+				journey.setTargetLocation(coordinate)
+				commit('setCurrentJourney', journey)
+
+				// Set the new progress
+				commit('setProgress', journey.getProgress())
+			}
+		},
+
 		/**
 		 * Retrieves the initial position when the application is started
 		 * and assigns the `currentLocation` prop.
@@ -42,6 +59,7 @@ export default new Vuex.Store({
 		 */
 		async retrieveCurrentLocation({ commit }) {
 			const coordinates = await Geolocation.getCurrentPosition()
+			console.info(`Set current position`, coordinates)
 			commit('setCurrentLocation', new Coordinate(coordinates))
 		},
 
@@ -58,8 +76,9 @@ export default new Vuex.Store({
 				threshold: (max - threshold) * 1000 // Distance left converted to meters
 			})
 
+			console.info('Journey created', journey)
+
 			commit('setCurrentJourney', journey)
-			console.log(journey.getProgress())
 			dispatch('createLocationListener')
 			return journey
 		},
@@ -78,7 +97,7 @@ export default new Vuex.Store({
 					console.error(err)
 					throw err
 				}
-				console.log(position)
+				console.info('Current position', position)
 
 				// Update current location in state
 				const newCurrentLocation = state.currentLocation.setCoordinates(position)
@@ -90,8 +109,10 @@ export default new Vuex.Store({
 				commit('setCurrentJourney', journey)
 
 				// Update the progress state
-				commit('setProgress', journey)
+				commit('setProgress', journey.getProgress())
 			})
+
+			console.info(`Watcher ID:`, wait)
 			commit('setWatcherId', wait)
 		}
 	},

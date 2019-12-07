@@ -86,3 +86,16 @@ it('returns the correct progress', () => {
 		threshold: 0.959776680128071
 	})
 })
+
+it('can change destination', () => {
+	const j = new Journey({ startLocation: point1, targetLocation: point2, threshold: 1000 })
+
+	expect(j.initialDistance).toBe(124693)
+	expect(j.targetLocation).toBe(point2)
+	expect(j.currentDistance).toBe(124693)
+
+	j.setTargetLocation(point3)
+	expect(j.targetLocation).toBe(point3)
+	expect(j.initialDistance).toBe(248612)
+	expect(j.currentDistance).toBe(248612)
+})

@@ -33,10 +33,9 @@ class Journey {
 		if (initialDistance <= threshold) {
 			throw new Error('Distance can not be less than the initial distance')
 		} else {
-			this.initialDistance = initialDistance
-			this.currentDistance = initialDistance
-			this.triggerDistance = initialDistance - threshold
-
+			// Assign target location distances etc
+			this.setTargetLocation(targetLocation)
+			// Add timestamp to measure elapsed time
 			this.startedAt = Date.now()
 		}
 	}
@@ -49,6 +48,20 @@ class Journey {
 	setCurrentLocation(currentLocation) {
 		this.currentLocation = currentLocation
 		this.currentDistance = this.targetLocation.calculateDistance(currentLocation)
+
+		return this
+	}
+
+	/**
+	 * Sets the instance's target location and calculates `initialDistance` and `currentDistance`.
+	 * @param {Coordinate} target The target location
+	 * @returns {Journey} this
+	 */
+	setTargetLocation(target) {
+		this.targetLocation = target
+		this.initialDistance = this.startLocation.calculateDistance(target)
+		this.currentDistance = this.currentLocation.calculateDistance(target)
+		this.triggerDistance = this.initialDistance - this.threshold
 
 		return this
 	}

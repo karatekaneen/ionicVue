@@ -13,6 +13,7 @@ describe('Destination View', () => {
 	let mutations
 	let store
 	let state
+	let actions
 
 	beforeEach(() => {
 		state = {
@@ -23,8 +24,13 @@ describe('Destination View', () => {
 			setTargetLocation: jest.fn()
 		}
 
+		actions = {
+			assignTargetLocation: jest.fn()
+		}
+
 		store = new Vuex.Store({
 			mutations,
+			actions,
 			state
 		})
 	})
@@ -70,9 +76,9 @@ describe('Destination View', () => {
 
 			const resp = wrapper.vm.createTargetCoordinates()
 
-			expect(mutations.setTargetLocation).toHaveBeenCalledTimes(1)
+			expect(actions.assignTargetLocation).toHaveBeenCalledTimes(1)
 
-			const { timestamp, ...call } = mutations.setTargetLocation.mock.calls[0][1]
+			const { timestamp, ...call } = actions.assignTargetLocation.mock.calls[0][1]
 
 			expect(call).toEqual({
 				accuracy: null,

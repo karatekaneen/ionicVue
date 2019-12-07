@@ -31,7 +31,7 @@
 					<v-icon>close</v-icon>
 				</v-btn>
 				<v-spacer></v-spacer>
-				<v-btn fab outlined @click="createTargetCoordinates">
+				<v-btn fab outlined @click="nextStep">
 					<v-icon>keyboard_arrow_right</v-icon>
 				</v-btn>
 			</v-card-actions>
@@ -76,6 +76,19 @@ export default {
 		}
 	},
 	methods: {
+		nextStep() {
+			this.createTargetCoordinates()
+
+			if (this.$store.state.currentJourney) {
+				/*
+				if there's a journey in store we can assume that the destination has been changed
+				and therefore probably won't need to go to the settings view again.
+				*/
+				this.$router.push({ name: 'inTransit' })
+			} else {
+				this.$router.push({ name: 'settings' })
+			}
+		},
 		/**
 		 * Method to move the marker on the map and update the local variable.
 		 *
@@ -100,6 +113,7 @@ export default {
 		 * @returns {Coordinate} The Coordinate instance
 		 */
 		createTargetCoordinates() {
+			// TODO Check if there is a journey and update the destination in that as well.
 			const coordinate = new Coordinate({
 				coords: {
 					latitude: this.markers[0].position.lat,
@@ -108,7 +122,7 @@ export default {
 				timestamp: Date.now()
 			})
 
-			this.$store.commit('setTargetLocation', coordinate)
+			this.$store.dispatch('assignTargetLocation', coordinate)
 			return coordinate
 		},
 
