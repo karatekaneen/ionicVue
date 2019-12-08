@@ -73,10 +73,18 @@ export default {
 			})
 
 			this.$router.push({ name: 'inTransit' })
+		},
+
+		getThreshold() {
+			if (this.$store.state.currentJourney) {
+				return this.$store.state.currentJourney.threshold
+			} else {
+				return Math.floor(this.max * 0.9)
+			}
 		}
 	},
 	mounted() {
-		this.threshold = Math.floor(this.max * 0.9)
+		this.threshold = this.getThreshold()
 	}
 }
 </script>
