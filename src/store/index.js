@@ -143,7 +143,7 @@ export default ({
 					const progress = journey.getProgress()
 					commit('setProgress', progress)
 
-					if (progress.shouldNotify) {
+					if (progress.shouldNotify && !state.notificationSent) {
 						console.info('Dispatching notification')
 						dispatch('sendNotification')
 					}
