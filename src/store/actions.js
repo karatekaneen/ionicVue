@@ -174,7 +174,6 @@ export default ({
 	async getFavorites({ commit }) {
 		const { value } = await Storage.get({ key: 'awake-favorites' })
 		if (value) {
-			console.log(value)
 			commit('setFavoriteLocations', JSON.parse(value))
 		}
 	},
