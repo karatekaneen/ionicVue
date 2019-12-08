@@ -23,14 +23,39 @@
 			</GmapMap>
 
 			<div class="d-flex" style="justify-content: center;">
-				<v-select
-					:items="favoriteLocations"
-					item-text="name"
-					v-model="selectedFavorite"
-					class="favorite-selector"
-					label="Favorites"
-					@input="setMarkerToFavorite"
-				></v-select>
+				<v-menu offset-y :close-on-content-click="false">
+					<template v-slot:activator="{ on }">
+						<v-btn color="primary" dark v-on="on">Favorites</v-btn>
+					</template>
+					<v-list>
+						<v-list-item
+							@click="selectedFavorite = favorite.name; setMarkerToFavorite()"
+							v-for="(favorite) in favoriteLocations"
+							:key="favorite.name"
+						>
+							<v-list-item-title>{{favorite.name}}</v-list-item-title>
+						</v-list-item>
+						<v-list-group>
+							<template v-slot:activator>
+								<v-list-item-icon>
+									<v-icon>delete</v-icon>
+								</v-list-item-icon>
+								<v-list-item-title>Remove</v-list-item-title>
+							</template>
+
+							<v-list-item
+								@click="testMetod('delete')"
+								v-for="(favorite) in favoriteLocations"
+								:key="favorite.name"
+							>
+								<v-list-item-icon>
+									<v-icon>close</v-icon>
+								</v-list-item-icon>
+								<v-list-item-title>{{favorite.name}}</v-list-item-title>
+							</v-list-item>
+						</v-list-group>
+					</v-list>
+				</v-menu>
 			</div>
 
 			<div class="d-flex">
@@ -129,6 +154,14 @@ export default {
 			const markerObj = { lat: () => location.latitude, lng: () => location.longitude }
 
 			this.moveMarker(markerObj)
+		},
+
+		removeFavorite() {
+			const favoriteToRemove = this.favoriteLocations.find(f => f.name === this.selectedFavorite)
+
+			if (favoriteToRemove) {
+				this.$store.dispatch('removeFavorite', favoriteToRemove)
+			}
 		},
 
 		/**

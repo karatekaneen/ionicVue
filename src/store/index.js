@@ -5,7 +5,8 @@ export default ({
 	Journey,
 	Geolocation,
 	LocalNotifications,
-	Notification
+	Notification,
+	Storage
 }) => {
 	Vue.use(Vuex)
 	console.info('Store created')
@@ -14,7 +15,7 @@ export default ({
 			currentLocation: null,
 			targetLocation: null,
 			currentJourney: null,
-			favoriteLocations: [], // TODO Implement fully
+			favoriteLocations: [],
 			watcherId: null,
 			notificationSent: false,
 			progress: {
@@ -200,8 +201,58 @@ export default ({
 					startedAt: null,
 					currentDistance: null
 				})
+			},
 
-				console.log(state)
+			/**
+			 * Fetches the favorites from the native storage and saves them to state.
+			 * @param {Object} context
+			 * @returns {void}
+			 */
+			async getFavorites({ commit }) {
+				const { value } = await Storage.get({ key: 'awake-favorites' })
+				if (value) {
+					console.log(value)
+					commit('setFavoriteLocations', JSON.parse(value))
+				}
+			},
+
+			/**
+			 * Saves the favorites to native storage and to state.
+			 * @param {Object} context
+			 * @param {Array<Object>} favorites The favorites to save to Storage.
+			 * @returns {void}
+			 */
+			async setFavorites({ commit }, favorites) {
+				await Storage.set({ key: 'awake-favorites', value: JSON.stringify(favorites) })
+				commit('setFavoriteLocations', favorites)
+			},
+
+			/**
+			 * Adds a new favorite to the list and dispatches a `setFavorites` action.
+			 * @param {Object} context
+			 * @param {Object} newFavorite Favorite to add.
+			 * @returns {void}
+			 */
+			async addToFavorites({ dispatch, state }, newFavorite) {
+				const favorites = state.favoriteLocations
+				favorites.push(newFavorite)
+				dispatch('setFavorites', favorites)
+			},
+
+			/**
+			 * Removes a single favorite from the list of favorites and dispatches the `setFavorites` action.
+			 * @param {Object} context
+			 * @param {Object} favoriteToRemove
+			 * @returns {void}
+			 */
+			async removeFavorite({ dispatch, state }, favoriteToRemove) {
+				const favorites = state.favoriteLocations.filter(
+					f =>
+						f.location.latitude !== favoriteToRemove.location.latitude &&
+						f.location.longitude !== favoriteToRemove.location.longitude
+				)
+
+				dispatch('setFavorites', favorites)
 			}
 		}
 	})
