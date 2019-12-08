@@ -3,6 +3,9 @@ import Vuex from 'vuex'
 import App from './App.vue'
 import router from './router'
 import createStore from './store'
+import actions from './store/actions'
+import state from './store/state'
+import mutations from './store/mutations'
 import * as VueGoogleMaps from 'vue2-google-maps'
 
 import Ionic from '@ionic/vue'
@@ -39,14 +42,18 @@ try {
 
 // Inject dependencies into the store.
 const store = createStore({
+	state: state(),
+	mutations: mutations(),
+	actions: actions({
+		Coordinate,
+		Journey,
+		Geolocation,
+		Notification,
+		LocalNotifications,
+		Storage
+	}),
 	Vue,
-	Vuex,
-	Coordinate,
-	Journey,
-	Geolocation,
-	Notification,
-	LocalNotifications,
-	Storage
+	Vuex
 })
 
 /**
