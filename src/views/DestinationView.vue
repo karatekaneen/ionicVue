@@ -26,7 +26,7 @@
 				<v-select disabled :items="favoritePlaces" class="favorite-selector" label="Favorites"></v-select>
 			</div>
 
-			<v-card-actions>
+			<div class="d-flex">
 				<v-btn fab outlined>
 					<v-icon>close</v-icon>
 				</v-btn>
@@ -34,7 +34,7 @@
 				<v-btn fab outlined @click="nextStep">
 					<v-icon>keyboard_arrow_right</v-icon>
 				</v-btn>
-			</v-card-actions>
+			</div>
 		</v-card>
 	</div>
 </template>
