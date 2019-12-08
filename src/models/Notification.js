@@ -6,14 +6,14 @@ class Notification {
 	 * Creates instance of a Notification.
 	 * @param {Object} params
 	 * @param {number} params.id Id of the notification
-	 * @param {String} params.title Title to be desplayed in the notification
-	 * @param {String} params.body Body for the notification
-	 * @param {String|number|Object} params.schedule Configuration for when the notification should be triggered. See `generateScheduleObj` for more detials
-	 * @param {String} params.sound What sound that should be played. **Not implemented yet**
-	 * @param {String} params.journey The Journey instance linked to this notification. To be used for when opening the ap from the notification
-	 * @param {String} params.smallIcon URI to the icon. **Not implemented yet**
-	 * @param {String} params.actionTypeId **Not implemented yet.**
-	 * @param {String} params.extra **Not implemented yet.**
+	 * @param {string} params.title Title to be desplayed in the notification
+	 * @param {string} params.body Body for the notification
+	 * @param {string|number|Object} params.schedule Configuration for when the notification should be triggered. See `generateScheduleObj` for more detials
+	 * @param {string} params.sound What sound that should be played. **Not implemented yet**
+	 * @param {string} params.journey The Journey instance linked to this notification. To be used for when opening the ap from the notification
+	 * @param {string} params.smallIcon URI to the icon. **Not implemented yet**
+	 * @param {string} params.actionTypeId **Not implemented yet.**
+	 * @param {string} params.extra **Not implemented yet.**
 	 */
 	constructor({
 		title,
