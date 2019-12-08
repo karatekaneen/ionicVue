@@ -3,7 +3,7 @@
 		<v-content class="app">
 			<ion-vue-router />
 		</v-content>
-		<v-bottom-navigation class="bottom-nav" dark grow color="primary" v-model="bottomNav">
+		<v-bottom-navigation class="bottom-nav" dark shift grow color="primary" v-model="bottomNav">
 			<v-btn
 				:retain-focus-on-click="true"
 				icon
@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import { Plugins } from '@capacitor/core'
+
 export default {
 	name: 'App',
 
@@ -51,6 +53,17 @@ export default {
 	}),
 	mounted() {
 		this.$store.dispatch('retrieveCurrentLocation')
+
+		// Register listener for notification actions
+		Plugins.LocalNotifications.addListener('localNotificationActionPerformed', ({ actionId }) => {
+			if (actionId === 'view') {
+				this.$router.push({ name: 'inTransit' })
+			} else if (actionId === 'remove') {
+				this.$store.dispatch('journeyRemoval')
+				this.$router.push({ name: 'destination' })
+			}
+			console.log('Notification action performed', notification)
+		})
 	}
 }
 </script>

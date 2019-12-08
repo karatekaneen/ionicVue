@@ -168,6 +168,40 @@ export default ({
 
 					commit('setNotificationSent', true)
 				}
+			},
+
+			/**
+			 * Resets the state when the journey is complete or cancelled.
+			 * @param {Object} context
+			 * @returns {void}
+			 */
+			async journeyRemoval({ state, commit }) {
+				// Stop listening for locations
+				await Geolocation.clearWatch(state.watcherId)
+
+				// Reset the watcher id
+				commit('setWatcherId', null)
+
+				// Reset the notification flag
+				commit('setNotificationSent', false)
+
+				// Reset the target and the current journey
+				commit('setTargetLocation', null)
+				commit('setCurrentJourney', null)
+
+				// Reset the progress
+				commit('setProgress', {
+					progressPercent: null,
+					distanceLeft: null,
+					timeElapsed: null,
+					threshold: null,
+					current: null,
+					shouldNotify: null,
+					startedAt: null,
+					currentDistance: null
+				})
+
+				console.log(state)
 			}
 		}
 	})

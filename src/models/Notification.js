@@ -53,17 +53,12 @@ class Notification {
 				actions: [
 					{
 						id: 'view',
-						title: 'Product'
+						title: 'View'
 					},
 					{
 						id: 'remove',
 						title: 'Remove',
 						destructive: true
-					},
-					{
-						id: 'response',
-						title: 'Response',
-						input: true
 					}
 				]
 			}
