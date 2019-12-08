@@ -1,12 +1,19 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+import createStore from './store'
 import * as VueGoogleMaps from 'vue2-google-maps'
 
 import Ionic from '@ionic/vue'
 import '@ionic/core/css/ionic.bundle.css'
 import vuetify from './plugins/vuetify'
+
+import Coordinate from './models/Coordinate'
+import Journey from './models/Journey'
+import Notification from './models/Notification'
+import { Plugins } from '@capacitor/core'
+const { Geolocation } = Plugins
 
 Vue.config.ignoredElements = [/^ion-/, /^jeep-/] // added line
 
@@ -18,6 +25,16 @@ Vue.use(VueGoogleMaps, {
 		key: process.env.VUE_APP_GOOGLE_API_KEY,
 		libraries: 'places'
 	}
+})
+
+// Inject dependencies into the store.
+const store = createStore({
+	Vue,
+	Vuex,
+	Coordinate,
+	Journey,
+	Geolocation,
+	Notification
 })
 
 /**
