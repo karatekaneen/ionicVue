@@ -44,7 +44,7 @@ class Notification {
 
 	/**
 	 * Get all the types of notifications that will be used in the application.
-	 * @returns {Array<object>} Array of notification types
+	 * @returns {Array<Object>} Array of notification types
 	 */
 	static getNotificationTypes() {
 		return [

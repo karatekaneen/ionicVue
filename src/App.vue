@@ -51,29 +51,6 @@ export default {
 	}),
 	mounted() {
 		this.$store.dispatch('retrieveCurrentLocation')
-		// LocalNotifications.registerActionTypes({
-		// 	types: [
-		// 		{
-		// 			id: 'OPEN_PRODUCT',
-		// 			actions: [
-		// 				{
-		// 					id: 'view',
-		// 					title: 'Product'
-		// 				},
-		// 				{
-		// 					id: 'remove',
-		// 					title: 'Remove',
-		// 					destructive: true
-		// 				},
-		// 				{
-		// 					id: 'response',
-		// 					title: 'Response',
-		// 					input: true
-		// 				}
-		// 			]
-		// 		}
-		// 	]
-		// })
 	}
 }
 </script>

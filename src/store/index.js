@@ -1,6 +1,14 @@
-export default ({ Vue, Vuex, Coordinate, Journey, Geolocation }) => {
+export default ({
+	Vue,
+	Vuex,
+	Coordinate,
+	Journey,
+	Geolocation,
+	LocalNotifications,
+	Notification
+}) => {
 	Vue.use(Vuex)
-
+	console.info('Store created')
 	return new Vuex.Store({
 		state: {
 			currentLocation: null,
@@ -8,6 +16,7 @@ export default ({ Vue, Vuex, Coordinate, Journey, Geolocation }) => {
 			currentJourney: null,
 			favoriteLocations: [], // TODO Implement fully
 			watcherId: null,
+			notificationSent: false,
 			progress: {
 				progressPercent: null,
 				distanceLeft: null,
@@ -26,7 +35,8 @@ export default ({ Vue, Vuex, Coordinate, Journey, Geolocation }) => {
 			setCurrentJourney: (state, journey) => (state.currentJourney = journey),
 			setFavoriteLocations: (state, favorites) => (state.favoriteLocations = favorites),
 			setWatcherId: (state, id) => (state.watcherId = id),
-			setProgress: (state, progress) => (state.progress = progress)
+			setProgress: (state, progress) => (state.progress = progress),
+			setNotificationSent: (state, sent) => (state.notificationSent = sent)
 		},
 		actions: {
 			/**
@@ -143,7 +153,22 @@ export default ({ Vue, Vuex, Coordinate, Journey, Geolocation }) => {
 				commit('setWatcherId', wait)
 			},
 
-			sendNotification({ state }) {}
+			/**
+			 * Creates and schedules a notification
+			 * @param {Object} context
+			 * @returns {void}
+			 */
+			sendNotification({ state, commit }) {
+				if (!state.notificationSent) {
+					const notification = new Notification({ journey: state.journey, schedule: 10 })
+
+					LocalNotifications.schedule({
+						notifications: [notification]
+					})
+
+					commit('setNotificationSent', true)
+				}
+			}
 		}
 	})
 }

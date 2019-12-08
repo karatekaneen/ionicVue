@@ -13,7 +13,7 @@ import Coordinate from './models/Coordinate'
 import Journey from './models/Journey'
 import Notification from './models/Notification'
 import { Plugins } from '@capacitor/core'
-const { Geolocation } = Plugins
+const { Geolocation, LocalNotifications } = Plugins
 
 Vue.config.ignoredElements = [/^ion-/, /^jeep-/] // added line
 
@@ -27,6 +27,16 @@ Vue.use(VueGoogleMaps, {
 	}
 })
 
+// Register notification types:
+try {
+	LocalNotifications.registerActionTypes({
+		types: Notification.getNotificationTypes()
+	})
+	console.info('Notification types registered')
+} catch (err) {
+	console.info('Notifications is not supported on web', err)
+}
+
 // Inject dependencies into the store.
 const store = createStore({
 	Vue,
@@ -34,7 +44,8 @@ const store = createStore({
 	Coordinate,
 	Journey,
 	Geolocation,
-	Notification
+	Notification,
+	LocalNotifications
 })
 
 /**
