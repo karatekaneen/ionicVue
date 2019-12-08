@@ -12,6 +12,7 @@
 					thumb-label
 					:max="max"
 					:min="min"
+					:step="max / 40 || 1"
 					hide-details
 					class="align-center slider"
 				>
@@ -20,10 +21,10 @@
 					</template>
 				</v-slider>
 			</div>
-			<div class="settings-item-container">
+			<div class="settings-item-container" v-if="!alreadyFavorite">
 				<v-checkbox v-model="saveLocation" label="Save location"></v-checkbox>
 			</div>
-			<div class="settings-item-container">
+			<div class="settings-item-container" v-if="!alreadyFavorite">
 				<v-text-field
 					label="Location name"
 					:disabled="!saveLocation"
@@ -53,7 +54,22 @@ export default {
 				return Math.round(this.currentLocation.calculateDistance(this.targetLocation) / 1000)
 			} else return 0
 		},
-		...mapState(['currentLocation', 'targetLocation'])
+
+		/**
+		 * Hides the "save to favorites" if the item already is in the favorites.
+		 */
+		alreadyFavorite() {
+			if (this.targetLocation) {
+				return Boolean(
+					this.favoriteLocations.find(
+						x =>
+							x.location.latitude === this.targetLocation.latitude &&
+							x.location.longitude === this.targetLocation.longitude
+					)
+				)
+			} else return true
+		},
+		...mapState(['currentLocation', 'targetLocation', 'favoriteLocations'])
 	},
 	data() {
 		return {
@@ -64,7 +80,7 @@ export default {
 		}
 	},
 	methods: {
-		createJourney() {
+		async createJourney() {
 			this.$store.dispatch('createJourney', {
 				currentLocation: this.currentLocation,
 				targetLocation: this.targetLocation,
@@ -72,9 +88,21 @@ export default {
 				max: this.max
 			})
 
+			if (this.saveLocation && this.locationName) {
+				const { latitude, longitude } = this.targetLocation
+				await this.$store.dispatch('addToFavorites', {
+					name: this.locationName,
+					location: { latitude, longitude }
+				})
+			}
+
 			this.$router.push({ name: 'inTransit' })
 		},
 
+		/**
+		 *  Gets the initial threshold on component mount. If there is an active journey it
+		 * returns the journey's threshold else it returns 90% of the initial distance.
+		 */
 		getThreshold() {
 			if (this.$store.state.currentJourney) {
 				return this.$store.state.currentJourney.threshold

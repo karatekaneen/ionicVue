@@ -64,6 +64,9 @@ export default {
 			}
 			console.log('Notification action performed', notification)
 		})
+	},
+	created() {
+		this.$store.dispatch('getFavorites')
 	}
 }
 </script>

@@ -23,7 +23,14 @@
 			</GmapMap>
 
 			<div class="d-flex" style="justify-content: center;">
-				<v-select disabled :items="favoritePlaces" class="favorite-selector" label="Favorites"></v-select>
+				<v-select
+					:items="favoriteLocations"
+					item-text="name"
+					v-model="selectedFavorite"
+					class="favorite-selector"
+					label="Favorites"
+					@input="setMarkerToFavorite"
+				></v-select>
 			</div>
 
 			<div class="d-flex">
@@ -41,7 +48,9 @@
 
 <script>
 import Coordinate from '../models/Coordinate'
+import { mapState } from 'vuex'
 export default {
+	computed: mapState(['favoriteLocations']),
 	data() {
 		return {
 			styles: [
@@ -70,12 +79,16 @@ export default {
 					stylers: [{ color: '#F7F8F7' }]
 				}
 			],
+
+			selectedFavorite: null,
 			markers: [{ position: { lat: 58, lng: 12 } }],
-			favoritePlaces: ['göteborg', 'stockholm'],
 			center: { lat: 58, lng: 12 }
 		}
 	},
 	methods: {
+		/**
+		 * Method to perform the actions needed to proceed to the next step.
+		 */
 		nextStep() {
 			this.createTargetCoordinates()
 
@@ -89,6 +102,7 @@ export default {
 				this.$router.push({ name: 'settings' })
 			}
 		},
+
 		/**
 		 * Method to move the marker on the map and update the local variable.
 		 *
@@ -102,7 +116,19 @@ export default {
 		 * @returns {void}
 		 */
 		moveMarker({ lat, lng }) {
+			console.log({ lat: lat(), lng: lng() })
 			this.markers[0].position = { lat: lat(), lng: lng() }
+		},
+
+		/**
+		 * Moves the map marker to the favorite selected.
+		 * @returns {void}
+		 */
+		setMarkerToFavorite() {
+			const { location } = this.favoriteLocations.find(f => f.name === this.selectedFavorite)
+			const markerObj = { lat: () => location.latitude, lng: () => location.longitude }
+
+			this.moveMarker(markerObj)
 		},
 
 		/**

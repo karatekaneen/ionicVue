@@ -13,7 +13,7 @@ import Coordinate from './models/Coordinate'
 import Journey from './models/Journey'
 import Notification from './models/Notification'
 import { Plugins } from '@capacitor/core'
-const { Geolocation, LocalNotifications } = Plugins
+const { Geolocation, LocalNotifications, Storage } = Plugins
 
 Vue.config.ignoredElements = [/^ion-/, /^jeep-/] // added line
 
@@ -45,7 +45,8 @@ const store = createStore({
 	Journey,
 	Geolocation,
 	Notification,
-	LocalNotifications
+	LocalNotifications,
+	Storage
 })
 
 /**
