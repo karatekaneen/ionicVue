@@ -75,30 +75,23 @@ const store = createStore({
  *
  * ### Color schema
  *
- * #### Primary
- * ![primary](https://github.com/karatekaneen/ionicVue/blob/master/docs/primary.png "primary color")
+ * Not all are being used but all selected are shown below.
  *
- * #### Secondary
- * ![secondary](https://github.com/karatekaneen/ionicVue/blob/master/docs/secondary.png "secondary color")
+ * In order top right to bottom left:
+ * - Primary
+ * - Secondary
+ * - Background
+ * - Accent
+ * - Info
+ * - Warning
+ * - Success
+ * - Error
  *
- * #### Background
- * ![Background](https://github.com/karatekaneen/ionicVue/blob/master/docs/background.png "Background color")
+ * ![primary](https://github.com/karatekaneen/ionicVue/blob/master/docs/primary.png "primary color") ![secondary](https://github.com/karatekaneen/ionicVue/blob/master/docs/secondary.png "secondary color") ![Background](https://github.com/karatekaneen/ionicVue/blob/master/docs/background.png "Background color")
  *
- * #### Accent
- * ![Accent](https://github.com/karatekaneen/ionicVue/blob/master/docs/accent.png "Accent color")
+ *  ![Accent](https://github.com/karatekaneen/ionicVue/blob/master/docs/accent.png "Accent color") ![info](https://github.com/karatekaneen/ionicVue/blob/master/docs/info.png "info color")  ![Warning](https://github.com/karatekaneen/ionicVue/blob/master/docs/warning.png "Warning color")
  *
- * #### Info
- * ![info](https://github.com/karatekaneen/ionicVue/blob/master/docs/info.png "info color")
- *
- * #### Warning
- * ![Warning](https://github.com/karatekaneen/ionicVue/blob/master/docs/warning.png "Warning color")
- *
- * #### Success
- * ![Success](https://github.com/karatekaneen/ionicVue/blob/master/docs/success.png "Success color")
- *
- * #### Error
- * ![Error](https://github.com/karatekaneen/ionicVue/blob/master/docs/error.png "Error color")
- *
+ * ![Success](https://github.com/karatekaneen/ionicVue/blob/master/docs/success.png "Success color")  ![Error](https://github.com/karatekaneen/ionicVue/blob/master/docs/error.png "Error color")
  *
  * # Usage
  * ## Installation for android

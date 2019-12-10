@@ -8,65 +8,57 @@
     -   [Design][4]
         -   [Wireframe of views:][5]
         -   [Color schema][6]
-            -   [Primary][7]
-            -   [Secondary][8]
-            -   [Background][9]
-            -   [Accent][10]
-            -   [Info][11]
-            -   [Warning][12]
-            -   [Success][13]
-            -   [Error][14]
--   [Usage][15]
-    -   [Installation for android][16]
-    -   [Installation for web][17]
-    -   [Tests][18]
-    -   [Generate documentation:][19]
-    -   [assignTargetLocation][20]
+-   [Usage][7]
+    -   [Installation for android][8]
+    -   [Installation for web][9]
+    -   [Tests][10]
+    -   [Generate documentation:][11]
+    -   [assignTargetLocation][12]
+        -   [Parameters][13]
+    -   [retrieveCurrentLocation][14]
+        -   [Parameters][15]
+    -   [createJourney][16]
+        -   [Parameters][17]
+    -   [createLocationListener][18]
+        -   [Parameters][19]
+    -   [sendNotification][20]
         -   [Parameters][21]
-    -   [retrieveCurrentLocation][22]
+    -   [journeyRemoval][22]
         -   [Parameters][23]
-    -   [createJourney][24]
+    -   [getFavorites][24]
         -   [Parameters][25]
-    -   [createLocationListener][26]
+    -   [setFavorites][26]
         -   [Parameters][27]
-    -   [sendNotification][28]
+    -   [addToFavorites][28]
         -   [Parameters][29]
-    -   [journeyRemoval][30]
+    -   [removeFavorite][30]
         -   [Parameters][31]
-    -   [getFavorites][32]
+    -   [Coordinate][32]
         -   [Parameters][33]
-    -   [setFavorites][34]
-        -   [Parameters][35]
-    -   [addToFavorites][36]
-        -   [Parameters][37]
-    -   [removeFavorite][38]
-        -   [Parameters][39]
-    -   [Coordinate][40]
-        -   [Parameters][41]
-        -   [setCoordinates][42]
-            -   [Parameters][43]
-        -   [calculateDistance][44]
-            -   [Parameters][45]
-        -   [toRadians][46]
-            -   [Parameters][47]
-        -   [toMarker][48]
-        -   [fromJSON][49]
+        -   [setCoordinates][34]
+            -   [Parameters][35]
+        -   [calculateDistance][36]
+            -   [Parameters][37]
+        -   [toRadians][38]
+            -   [Parameters][39]
+        -   [toMarker][40]
+        -   [fromJSON][41]
+            -   [Parameters][42]
+    -   [Journey][43]
+        -   [Parameters][44]
+        -   [setCurrentLocation][45]
+            -   [Parameters][46]
+        -   [setThreshold][47]
+            -   [Parameters][48]
+        -   [setTargetLocation][49]
             -   [Parameters][50]
-    -   [Journey][51]
-        -   [Parameters][52]
-        -   [setCurrentLocation][53]
-            -   [Parameters][54]
-        -   [setThreshold][55]
+        -   [getProgress][51]
+    -   [Notification][52]
+        -   [Parameters][53]
+        -   [getRandomTitle][54]
+        -   [generateScheduleObj][55]
             -   [Parameters][56]
-        -   [setTargetLocation][57]
-            -   [Parameters][58]
-        -   [getProgress][59]
-    -   [Notification][60]
-        -   [Parameters][61]
-        -   [getRandomTitle][62]
-        -   [generateScheduleObj][63]
-            -   [Parameters][64]
-        -   [getNotificationTypes][65]
+        -   [getNotificationTypes][57]
 
 ## Awake
 
@@ -84,41 +76,28 @@ Material design via vuetify
 
 ### Wireframe of views:
 
-![wireframe][66]
+![wireframe][58]
 
 ### Color schema
 
-#### Primary
+Not all are being used but all selected are shown below.
 
-![primary][67]
+In order top right to bottom left:
 
-#### Secondary
+-   Primary
+-   Secondary
+-   Background
+-   Accent
+-   Info
+-   Warning
+-   Success
+-   Error
 
-![secondary][68]
+![primary][59] ![secondary][60] ![Background][61]
 
-#### Background
+ ![Accent][62] ![info][63]  ![Warning][64]
 
-![Background][69]
-
-#### Accent
-
-![Accent][70]
-
-#### Info
-
-![info][71]
-
-#### Warning
-
-![Warning][72]
-
-#### Success
-
-![Success][73]
-
-#### Error
-
-![Error][74]
+![Success][65]  ![Error][66]
 
 # Usage
 
@@ -160,10 +139,10 @@ journey active it will be updated as well.
 
 ### Parameters
 
--   `context` **[Object][75]** 
+-   `context` **[Object][67]** 
     -   `context.commit`  
     -   `context.state`  
--   `coordinate` **[Coordinate][76]** The target location
+-   `coordinate` **[Coordinate][68]** The target location
 
 ## retrieveCurrentLocation
 
@@ -172,7 +151,7 @@ and assigns the `currentLocation` prop.
 
 ### Parameters
 
--   `context` **[Object][75]** 
+-   `context` **[Object][67]** 
     -   `context.commit`  
 
 ## createJourney
@@ -184,17 +163,17 @@ from the `max` value to get the distance to notify at.
 
 ### Parameters
 
--   `context` **[Object][75]** The store
+-   `context` **[Object][67]** The store
     -   `context.commit`  
     -   `context.dispatch`  
     -   `context.state`  
--   `journey` **[Object][75]** The Journey settings deconstructed
-    -   `journey.currentLocation` **[Coordinate][76]** 
-    -   `journey.targetLocation` **[Coordinate][76]** 
-    -   `journey.threshold` **[number][77]** 
-    -   `journey.max` **[number][77]** 
+-   `journey` **[Object][67]** The Journey settings deconstructed
+    -   `journey.currentLocation` **[Coordinate][68]** 
+    -   `journey.targetLocation` **[Coordinate][68]** 
+    -   `journey.threshold` **[number][69]** 
+    -   `journey.max` **[number][69]** 
 
-Returns **[Journey][78]** the Journey instance.
+Returns **[Journey][70]** the Journey instance.
 
 ## createLocationListener
 
@@ -204,7 +183,7 @@ It then updates the state props `currentLocation`, `currentJourney` and `progres
 
 ### Parameters
 
--   `context` **[Object][75]** 
+-   `context` **[Object][67]** 
     -   `context.commit`  
     -   `context.state`  
     -   `context.dispatch`  
@@ -217,7 +196,7 @@ Creates and schedules a notification
 
 ### Parameters
 
--   `context` **[Object][75]** 
+-   `context` **[Object][67]** 
     -   `context.state`  
     -   `context.commit`  
 
@@ -229,7 +208,7 @@ Resets the state when the journey is complete or cancelled.
 
 ### Parameters
 
--   `context` **[Object][75]** 
+-   `context` **[Object][67]** 
     -   `context.state`  
     -   `context.commit`  
 
@@ -241,7 +220,7 @@ Fetches the favorites from the native storage and saves them to state.
 
 ### Parameters
 
--   `context` **[Object][75]** 
+-   `context` **[Object][67]** 
     -   `context.commit`  
 
 Returns **void** 
@@ -252,9 +231,9 @@ Saves the favorites to native storage and to state.
 
 ### Parameters
 
--   `context` **[Object][75]** 
+-   `context` **[Object][67]** 
     -   `context.commit`  
--   `favorites` **[Array][79]&lt;[Object][75]>** The favorites to save to Storage.
+-   `favorites` **[Array][71]&lt;[Object][67]>** The favorites to save to Storage.
 
 Returns **void** 
 
@@ -264,10 +243,10 @@ Adds a new favorite to the list and dispatches a `setFavorites` action.
 
 ### Parameters
 
--   `context` **[Object][75]** 
+-   `context` **[Object][67]** 
     -   `context.dispatch`  
     -   `context.state`  
--   `newFavorite` **[Object][75]** Favorite to add.
+-   `newFavorite` **[Object][67]** Favorite to add.
 
 Returns **void** 
 
@@ -277,10 +256,10 @@ Removes a single favorite from the list of favorites and dispatches the `setFavo
 
 ### Parameters
 
--   `context` **[Object][75]** 
+-   `context` **[Object][67]** 
     -   `context.dispatch`  
     -   `context.state`  
--   `favoriteToRemove` **[Object][75]** 
+-   `favoriteToRemove` **[Object][67]** 
 
 Returns **void** 
 
@@ -290,7 +269,7 @@ Class for coordinate points with some helper methods to do some calculations suc
 
 ### Parameters
 
--   `locationResponse` **[Object][75]** The response from the native GPS. If coordinates originates from different source they need to be converted to fit the input
+-   `locationResponse` **[Object][67]** The response from the native GPS. If coordinates originates from different source they need to be converted to fit the input
 
 ### setCoordinates
 
@@ -298,39 +277,39 @@ Sets the instance's location properties. Used both for creating a new instance a
 
 #### Parameters
 
--   `location` **[Object][75]** 
-    -   `location.coords` **[Object][75]** The coordinate object , mainly with the `latitude` and `longitude` props.
+-   `location` **[Object][67]** 
+    -   `location.coords` **[Object][67]** The coordinate object , mainly with the `latitude` and `longitude` props.
 
-Returns **[Coordinate][76]** this
+Returns **[Coordinate][68]** this
 
 ### calculateDistance
 
 Calculates the distance between two coordinate points.
-Calculation and code found at [this link][80]
+Calculation and code found at [this link][72]
 
 #### Parameters
 
--   `coordinate1` **[Coordinate][76]** The target coordinates
--   `coordinate2` **[Coordinate][76]** The current coordinates, defaults to this. (optional, default `this`)
+-   `coordinate1` **[Coordinate][68]** The target coordinates
+-   `coordinate2` **[Coordinate][68]** The current coordinates, defaults to this. (optional, default `this`)
 
-Returns **[number][77]** Distance in meters?
+Returns **[number][69]** Distance in meters?
 
 ### toRadians
 
 Helper method to convert degrees to radians, which is a different kind of degrees.
-formula found at [this link][81]
+formula found at [this link][73]
 
 #### Parameters
 
--   `degrees` **[number][77]** Degrees that should be converted to radians
+-   `degrees` **[number][69]** Degrees that should be converted to radians
 
-Returns **[number][77]** degrees converted to radians
+Returns **[number][69]** degrees converted to radians
 
 ### toMarker
 
 Helper method to create object to add markers to the Google map component
 
-Returns **[Object][75]** In the correct form for Google maps
+Returns **[Object][67]** In the correct form for Google maps
 
 ### fromJSON
 
@@ -344,11 +323,11 @@ const coordinate = new Coordinate(Coordinate.fromJSON(jsonObject))
 
 #### Parameters
 
--   `coordinate` **[Object][75]** A Coordinate instance that has been serialized to JSON.
+-   `coordinate` **[Object][67]** A Coordinate instance that has been serialized to JSON.
     -   `coordinate.timestamp`  
     -   `coordinate.coords` **...any** 
 
-Returns **[Coordinate][76]** 
+Returns **[Coordinate][68]** 
 
 ## Journey
 
@@ -356,11 +335,11 @@ The class that contains all the information for a particular trip
 
 ### Parameters
 
--   `$0` **[Object][75]**  (optional, default `{}`)
+-   `$0` **[Object][67]**  (optional, default `{}`)
     -   `$0.startLocation`  
     -   `$0.targetLocation`  
     -   `$0.threshold`  
--   `params` **[Object][75]** 
+-   `params` **[Object][67]** 
 
 ### setCurrentLocation
 
@@ -368,9 +347,9 @@ Updates the current location and also updates the distance to the destination.
 
 #### Parameters
 
--   `currentLocation` **[Coordinate][76]** The current location
+-   `currentLocation` **[Coordinate][68]** The current location
 
-Returns **[Journey][78]** this
+Returns **[Journey][70]** this
 
 ### setThreshold
 
@@ -378,9 +357,9 @@ Sets the instances threshold
 
 #### Parameters
 
--   `threshold` **[number][77]** The distance from the destination where the notification should be sent
+-   `threshold` **[number][69]** The distance from the destination where the notification should be sent
 
-Returns **[Journey][78]** this
+Returns **[Journey][70]** this
 
 ### setTargetLocation
 
@@ -388,15 +367,15 @@ Sets the instance's target location and calculates `initialDistance` and `curren
 
 #### Parameters
 
--   `target` **[Coordinate][76]** The target location
+-   `target` **[Coordinate][68]** The target location
 
-Returns **[Journey][78]** this
+Returns **[Journey][70]** this
 
 ### getProgress
 
 Get how much of the journey that is complete.
 
-Returns **[Object][75]** `threshold` is the fraction of the trip where the notification should be sent. `current` is the current percentage of the trip that's completed. `shouldNotify` is a bool that notifies if the current distance is less than the threhsold distance
+Returns **[Object][67]** `threshold` is the fraction of the trip where the notification should be sent. `current` is the current percentage of the trip that's completed. `shouldNotify` is a bool that notifies if the current distance is less than the threhsold distance
 
 ## Notification
 
@@ -404,7 +383,7 @@ Class to be used for local notifications natively.
 
 ### Parameters
 
--   `$0` **[Object][75]**  (optional, default `{}`)
+-   `$0` **[Object][67]**  (optional, default `{}`)
     -   `$0.title`  
     -   `$0.body`   (optional, default `'You are about to arrive at your destination'`)
     -   `$0.schedule`   (optional, default `'now'`)
@@ -414,13 +393,13 @@ Class to be used for local notifications natively.
     -   `$0.actionTypeId`   (optional, default `'DEFAULT'`)
     -   `$0.smallIcon`   (optional, default `null`)
     -   `$0.extra`   (optional, default `null`)
--   `params` **[Object][75]** 
+-   `params` **[Object][67]** 
 
 ### getRandomTitle
 
 Returns random title if none is provided to the constructor
 
-Returns **[String][82]** Random title
+Returns **[String][74]** Random title
 
 ### generateScheduleObj
 
@@ -428,15 +407,15 @@ Generates the object that triggers the notification.
 
 #### Parameters
 
--   `schedule` **([String][82] \| [number][77] \| [Object][75])** When to send the notification. If it is a string with `now` it starts in 5 seconds, if it is a number it starts in the number of seconds. If it is an object it is considered to know what is required and is return as it is. (optional, default `'now'`)
+-   `schedule` **([String][74] \| [number][69] \| [Object][67])** When to send the notification. If it is a string with `now` it starts in 5 seconds, if it is a number it starts in the number of seconds. If it is an object it is considered to know what is required and is return as it is. (optional, default `'now'`)
 
-Returns **[Object][75]** Schedule object for the notification
+Returns **[Object][67]** Schedule object for the notification
 
 ### getNotificationTypes
 
 Get all the types of notifications that will be used in the application.
 
-Returns **[Array][79]&lt;[Object][75]>** Array of notification types
+Returns **[Array][71]&lt;[Object][67]>** Array of notification types
 
 [1]: #awake
 
@@ -450,154 +429,138 @@ Returns **[Array][79]&lt;[Object][75]>** Array of notification types
 
 [6]: #color-schema
 
-[7]: #primary
+[7]: #usage
 
-[8]: #secondary
+[8]: #installation-for-android
 
-[9]: #background
+[9]: #installation-for-web
 
-[10]: #accent
+[10]: #tests
 
-[11]: #info
+[11]: #generate-documentation
 
-[12]: #warning
+[12]: #assigntargetlocation
 
-[13]: #success
+[13]: #parameters
 
-[14]: #error
+[14]: #retrievecurrentlocation
 
-[15]: #usage
+[15]: #parameters-1
 
-[16]: #installation-for-android
+[16]: #createjourney
 
-[17]: #installation-for-web
+[17]: #parameters-2
 
-[18]: #tests
+[18]: #createlocationlistener
 
-[19]: #generate-documentation
+[19]: #parameters-3
 
-[20]: #assigntargetlocation
+[20]: #sendnotification
 
-[21]: #parameters
+[21]: #parameters-4
 
-[22]: #retrievecurrentlocation
+[22]: #journeyremoval
 
-[23]: #parameters-1
+[23]: #parameters-5
 
-[24]: #createjourney
+[24]: #getfavorites
 
-[25]: #parameters-2
+[25]: #parameters-6
 
-[26]: #createlocationlistener
+[26]: #setfavorites
 
-[27]: #parameters-3
+[27]: #parameters-7
 
-[28]: #sendnotification
+[28]: #addtofavorites
 
-[29]: #parameters-4
+[29]: #parameters-8
 
-[30]: #journeyremoval
+[30]: #removefavorite
 
-[31]: #parameters-5
+[31]: #parameters-9
 
-[32]: #getfavorites
+[32]: #coordinate
 
-[33]: #parameters-6
+[33]: #parameters-10
 
-[34]: #setfavorites
+[34]: #setcoordinates
 
-[35]: #parameters-7
+[35]: #parameters-11
 
-[36]: #addtofavorites
+[36]: #calculatedistance
 
-[37]: #parameters-8
+[37]: #parameters-12
 
-[38]: #removefavorite
+[38]: #toradians
 
-[39]: #parameters-9
+[39]: #parameters-13
 
-[40]: #coordinate
+[40]: #tomarker
 
-[41]: #parameters-10
+[41]: #fromjson
 
-[42]: #setcoordinates
+[42]: #parameters-14
 
-[43]: #parameters-11
+[43]: #journey
 
-[44]: #calculatedistance
+[44]: #parameters-15
 
-[45]: #parameters-12
+[45]: #setcurrentlocation
 
-[46]: #toradians
+[46]: #parameters-16
 
-[47]: #parameters-13
+[47]: #setthreshold
 
-[48]: #tomarker
+[48]: #parameters-17
 
-[49]: #fromjson
+[49]: #settargetlocation
 
-[50]: #parameters-14
+[50]: #parameters-18
 
-[51]: #journey
+[51]: #getprogress
 
-[52]: #parameters-15
+[52]: #notification
 
-[53]: #setcurrentlocation
+[53]: #parameters-19
 
-[54]: #parameters-16
+[54]: #getrandomtitle
 
-[55]: #setthreshold
+[55]: #generatescheduleobj
 
-[56]: #parameters-17
+[56]: #parameters-20
 
-[57]: #settargetlocation
+[57]: #getnotificationtypes
 
-[58]: #parameters-18
+[58]: https://github.com/karatekaneen/ionicVue/blob/master/docs/AwakerViews.jpg "Wireframe views"
 
-[59]: #getprogress
+[59]: https://github.com/karatekaneen/ionicVue/blob/master/docs/primary.png "primary color"
 
-[60]: #notification
+[60]: https://github.com/karatekaneen/ionicVue/blob/master/docs/secondary.png "secondary color"
 
-[61]: #parameters-19
+[61]: https://github.com/karatekaneen/ionicVue/blob/master/docs/background.png "Background color"
 
-[62]: #getrandomtitle
+[62]: https://github.com/karatekaneen/ionicVue/blob/master/docs/accent.png "Accent color"
 
-[63]: #generatescheduleobj
+[63]: https://github.com/karatekaneen/ionicVue/blob/master/docs/info.png "info color"
 
-[64]: #parameters-20
+[64]: https://github.com/karatekaneen/ionicVue/blob/master/docs/warning.png "Warning color"
 
-[65]: #getnotificationtypes
+[65]: https://github.com/karatekaneen/ionicVue/blob/master/docs/success.png "Success color"
 
-[66]: https://github.com/karatekaneen/ionicVue/blob/master/docs/AwakerViews.jpg "Wireframe views"
+[66]: https://github.com/karatekaneen/ionicVue/blob/master/docs/error.png "Error color"
 
-[67]: https://github.com/karatekaneen/ionicVue/blob/master/docs/primary.png "primary color"
+[67]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[68]: https://github.com/karatekaneen/ionicVue/blob/master/docs/secondary.png "secondary color"
+[68]: #coordinate
 
-[69]: https://github.com/karatekaneen/ionicVue/blob/master/docs/background.png "Background color"
+[69]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[70]: https://github.com/karatekaneen/ionicVue/blob/master/docs/accent.png "Accent color"
+[70]: #journey
 
-[71]: https://github.com/karatekaneen/ionicVue/blob/master/docs/info.png "info color"
+[71]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[72]: https://github.com/karatekaneen/ionicVue/blob/master/docs/warning.png "Warning color"
+[72]: https://www.movable-type.co.uk/scripts/latlong.html
 
-[73]: https://github.com/karatekaneen/ionicVue/blob/master/docs/success.png "Success color"
+[73]: https://www.w3resource.com/javascript-exercises/javascript-math-exercise-33.php
 
-[74]: https://github.com/karatekaneen/ionicVue/blob/master/docs/error.png "Error color"
-
-[75]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
-
-[76]: #coordinate
-
-[77]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
-
-[78]: #journey
-
-[79]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
-
-[80]: https://www.movable-type.co.uk/scripts/latlong.html
-
-[81]: https://www.w3resource.com/javascript-exercises/javascript-math-exercise-33.php
-
-[82]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[74]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
