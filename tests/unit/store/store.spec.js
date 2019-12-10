@@ -8,6 +8,7 @@ import { Plugins } from '@capacitor/core'
 import Coordinate from '../../../src/models/Coordinate'
 import Journey from '../../../src/models/Journey'
 import Notification from '../../../src/models/Notification'
+
 const localVue = createLocalVue()
 
 // Mocks:
@@ -39,13 +40,7 @@ const validJourney = {
 }
 
 describe('Store actions', () => {
-	let store
-	let actionsObj
-	let commit = jest.fn()
-	let dispatch = jest.fn()
-	let state = _state()
-	let LocalNotifications
-	let Geolocation
+	let store, actionsObj, LocalNotifications, Geolocation, Storage, commit, dispatch, state
 
 	beforeEach(() => {
 		jest.clearAllMocks()
@@ -60,12 +55,19 @@ describe('Store actions', () => {
 			getCurrentPosition: jest.fn(() => ({ coords: { latitude: 57, longitude: 12 } }))
 		}
 
+		Storage = {
+			get: jest.fn().mockResolvedValue({
+				value: JSON.stringify({ favorites: [{ name: 'favorite 1', location: 'wopop' }] })
+			}),
+			set: jest.fn().mockResolvedValue(true)
+		}
+
 		actionsObj = actions({
 			Coordinate,
 			Journey,
 			Notification,
 			Geolocation,
-			Storage: Plugins.Storage,
+			Storage,
 			LocalNotifications
 		})
 	})
@@ -263,5 +265,52 @@ describe('Store actions', () => {
 		})
 	})
 
-	test.todo('need to test the storage actions')
+	describe('Storage', () => {
+		it('can read', async () => {
+			await actionsObj.getFavorites({ commit })
+			expect(Storage.get).toHaveBeenCalledWith({ key: 'awake-favorites' })
+			expect(commit).toHaveBeenCalledWith('setFavoriteLocations', {
+				favorites: [{ location: 'wopop', name: 'favorite 1' }]
+			})
+		})
+
+		it('can write', async () => {
+			expect(state.favoriteLocations.length).toBe(0)
+
+			await actionsObj.setFavorites({ commit }, [{ location: 'wopop', name: 'favorite 1' }])
+
+			expect(Storage.set).toHaveBeenCalledWith({
+				key: 'awake-favorites',
+				value: '[{"location":"wopop","name":"favorite 1"}]'
+			})
+
+			expect(commit).toHaveBeenCalledWith('setFavoriteLocations', [
+				{ location: 'wopop', name: 'favorite 1' }
+			])
+		})
+
+		it('can add', async () => {
+			state.favoriteLocations = [
+				{ location: { latitude: 13, longitude: 55 }, name: 'favorite1' }
+			]
+			const newFavorite = { location: { latitude: 12, longitude: 54 }, name: 'favorite2' }
+
+			await actionsObj.addToFavorites({ dispatch, state }, newFavorite)
+			expect(dispatch).toHaveBeenCalledWith('setFavorites', [
+				{ location: { latitude: 13, longitude: 55 }, name: 'favorite1' },
+				{ location: { latitude: 12, longitude: 54 }, name: 'favorite2' }
+			])
+		})
+
+		it('can remove', async () => {
+			state.favoriteLocations = [
+				{ location: { latitude: 13, longitude: 55 }, name: 'favorite1' },
+				{ location: { latitude: 12, longitude: 54 }, name: 'favorite2' }
+			]
+			const favoriteToRemove = { location: { latitude: 12, longitude: 54 }, name: 'favorite2' }
+
+			await actionsObj.removeFavorite({ dispatch, state }, favoriteToRemove)
+			expect(dispatch).toHaveBeenCalledWith('setFavorites', [state.favoriteLocations[0]])
+		})
+	})
 })
