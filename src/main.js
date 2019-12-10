@@ -82,22 +82,22 @@ const store = createStore({
  * ![secondary](https://github.com/karatekaneen/ionicVue/blob/master/docs/secondary.png "secondary color")
  *
  * #### Background
- * ![Background](https://github.com/karatekaneen/ionicVue/blob/master/docs/Background.png "Background color")
+ * ![Background](https://github.com/karatekaneen/ionicVue/blob/master/docs/background.png "Background color")
  *
  * #### Accent
- * ![Accent](https://github.com/karatekaneen/ionicVue/blob/master/docs/Accent.png "Accent color")
+ * ![Accent](https://github.com/karatekaneen/ionicVue/blob/master/docs/accent.png "Accent color")
  *
  * #### Info
  * ![info](https://github.com/karatekaneen/ionicVue/blob/master/docs/info.png "info color")
  *
  * #### Warning
- * ![Warning](https://github.com/karatekaneen/ionicVue/blob/master/docs/Warning.png "Warning color")
+ * ![Warning](https://github.com/karatekaneen/ionicVue/blob/master/docs/warning.png "Warning color")
  *
  * #### Success
- * ![Success](https://github.com/karatekaneen/ionicVue/blob/master/docs/Success.png "Success color")
+ * ![Success](https://github.com/karatekaneen/ionicVue/blob/master/docs/success.png "Success color")
  *
  * #### Error
- * ![Error](https://github.com/karatekaneen/ionicVue/blob/master/docs/Error.png "Error color")
+ * ![Error](https://github.com/karatekaneen/ionicVue/blob/master/docs/error.png "Error color")
  *
  *
  * # Usage

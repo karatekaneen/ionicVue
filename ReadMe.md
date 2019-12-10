@@ -574,17 +574,17 @@ Returns **[Array][79]&lt;[Object][75]>** Array of notification types
 
 [68]: https://github.com/karatekaneen/ionicVue/blob/master/docs/secondary.png "secondary color"
 
-[69]: https://github.com/karatekaneen/ionicVue/blob/master/docs/Background.png "Background color"
+[69]: https://github.com/karatekaneen/ionicVue/blob/master/docs/background.png "Background color"
 
-[70]: https://github.com/karatekaneen/ionicVue/blob/master/docs/Accent.png "Accent color"
+[70]: https://github.com/karatekaneen/ionicVue/blob/master/docs/accent.png "Accent color"
 
 [71]: https://github.com/karatekaneen/ionicVue/blob/master/docs/info.png "info color"
 
-[72]: https://github.com/karatekaneen/ionicVue/blob/master/docs/Warning.png "Warning color"
+[72]: https://github.com/karatekaneen/ionicVue/blob/master/docs/warning.png "Warning color"
 
-[73]: https://github.com/karatekaneen/ionicVue/blob/master/docs/Success.png "Success color"
+[73]: https://github.com/karatekaneen/ionicVue/blob/master/docs/success.png "Success color"
 
-[74]: https://github.com/karatekaneen/ionicVue/blob/master/docs/Error.png "Error color"
+[74]: https://github.com/karatekaneen/ionicVue/blob/master/docs/error.png "Error color"
 
 [75]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
