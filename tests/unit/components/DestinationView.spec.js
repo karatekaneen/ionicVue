@@ -1,4 +1,4 @@
-import DestinationView from '../../../src/views/DestinationView.vue'
+import DestinationSelector from '../../../src/components/DestinationSelector.vue'
 import Coordinate from '../../../src/models/Coordinate'
 import { shallowMount } from '@vue/test-utils'
 import Vue from 'vue'
@@ -37,7 +37,7 @@ describe('Destination View', () => {
 
 	describe('Logic', () => {
 		it('modifies marker object when calling moveMarker', () => {
-			const wrapper = shallowMount(DestinationView, {
+			const wrapper = shallowMount(DestinationSelector, {
 				Vue,
 				store,
 				propsData: {
@@ -50,7 +50,7 @@ describe('Destination View', () => {
 		})
 
 		it('creates a coordinate instance', () => {
-			const wrapper = shallowMount(DestinationView, {
+			const wrapper = shallowMount(DestinationSelector, {
 				Vue,
 				store,
 				propsData: {
@@ -66,7 +66,7 @@ describe('Destination View', () => {
 		})
 
 		it('Adds the coordinate instance to the store', () => {
-			const wrapper = shallowMount(DestinationView, {
+			const wrapper = shallowMount(DestinationSelector, {
 				Vue,
 				store,
 				propsData: {
