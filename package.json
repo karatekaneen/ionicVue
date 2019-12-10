@@ -17,7 +17,7 @@
 		"test:e2e": "vue-cli-service test:e2e",
 		"test:unit": "vue-cli-service test:unit --verbose --silent",
 		"testwatch": "vue-cli-service test:unit --verbose --silent --watchAll",
-		"docs:md": "documentation build .\\src\\main.js --markdown-toc-max-depth 6 -o ReadMe.md -f \"md\"",
+		"docs:md": "documentation build .\\src\\main.js --markdown-toc false -o ReadMe.md -f \"md\"",
 		"docs:html": "documentation build .\\src\\main.js -o docs -f \"html\"",
 		"docs:full": "npm run docs:md && npm run docs:html"
 	},
