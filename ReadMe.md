@@ -82,7 +82,7 @@ Material design via vuetify
 
 Not all are being used but all selected are shown below.
 
-In order top right to bottom left:
+In order top left to bottom right:
 
 -   Primary
 -   Secondary
