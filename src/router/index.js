@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import RepoView from '../views/RepoView.vue'
 import DestinationView from '../views/DestinationView.vue'
 import InTransit from '../views/InTransit.vue'
+import StartView from '../views/StartView.vue'
 import SettingsView from '../views/SettingsView.vue'
 import { IonicVueRouter } from '@ionic/vue'
 
@@ -10,8 +10,8 @@ Vue.use(IonicVueRouter)
 const routes = [
 	{
 		path: '/',
-		name: 'repos',
-		component: RepoView
+		name: 'start',
+		component: StartView
 	},
 	{
 		path: '/destination',

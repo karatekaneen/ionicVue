@@ -1,10 +1,11 @@
 export default () => ({
-	currentLocation: null,
-	targetLocation: null,
-	currentJourney: null,
-	favoriteLocations: [],
 	watcherId: null,
+	currentJourney: null,
+	targetLocation: null,
+	currentLocation: null,
 	notificationSent: false,
+	favoriteLocations: [],
+
 	progress: {
 		progressPercent: null,
 		distanceLeft: null,

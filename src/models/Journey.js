@@ -95,14 +95,13 @@ class Journey {
 		const timeDiff = new Date(Date.now() - this.startedAt)
 		const hours = timeDiff.getUTCHours()
 		const minutes = timeDiff.getUTCMinutes()
-		const seconds = timeDiff.getUTCSeconds() // TODO Remove seconds before production
 
 		const readableTime = i => (i < 10 ? '0' + i : i) // Helper methods to make time look nice
 
 		return {
 			progressPercent,
 			distanceLeft,
-			timeElapsed: `${readableTime(hours)}:${readableTime(minutes)}:${readableTime(seconds)}`,
+			timeElapsed: `${readableTime(hours)}:${readableTime(minutes)}`,
 			threshold,
 			current,
 			shouldNotify: current >= threshold,

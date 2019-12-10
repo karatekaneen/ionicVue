@@ -2,11 +2,9 @@
 	<v-card class="info-card secondary-opaque settings-container">
 		<v-card-title class="info-card-header font-weight-thin">Settings</v-card-title>
 		<v-card-text>
-			<!-- using :value & @input because v-model isn't implemented fully yet. -->
 			<div class="settings-item-container">
 				<span class="overline">Notification distance</span>
-				<!-- :value="threshold"
-				@input="threshold = $event"-->
+				<!-- Using 40 steps or fallback to 1 if max is 0 or null -->
 				<v-slider
 					v-model="threshold"
 					thumb-label
@@ -71,14 +69,14 @@ export default {
 		},
 		...mapState(['currentLocation', 'targetLocation', 'favoriteLocations'])
 	},
-	data() {
-		return {
-			saveLocation: false,
-			locationName: '',
-			min: 0,
-			threshold: 100
-		}
-	},
+
+	data: () => ({
+		saveLocation: false,
+		locationName: '',
+		min: 0,
+		threshold: 100
+	}),
+
 	methods: {
 		async createJourney() {
 			this.$store.dispatch('createJourney', {

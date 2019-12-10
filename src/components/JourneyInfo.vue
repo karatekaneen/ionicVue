@@ -17,20 +17,18 @@
 		<div>
 			<span class="primary--text title">{{ progress.timeElapsed }}</span>
 		</div>
+		
+		<!-- Dialog to remove the journey -->
 		<v-dialog v-model="dialog" width="300">
 			<template v-slot:activator="{ on }">
 				<v-btn outlined dark fab x-large v-on="on" class="cancel-button">
 					<v-icon>mdi-close</v-icon>
 				</v-btn>
 			</template>
-
 			<v-card>
 				<v-card-title class="headline grey lighten-2" primary-title>Cancel Journey</v-card-title>
-
 				<v-card-text>Do you want to cancel the journey?</v-card-text>
-
 				<v-divider></v-divider>
-
 				<v-card-actions>
 					<v-spacer></v-spacer>
 					<v-btn color="primary" rounded @click="dialog = false">No</v-btn>
