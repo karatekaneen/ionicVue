@@ -73,6 +73,33 @@ const store = createStore({
  *
  * ![wireframe](https://github.com/karatekaneen/ionicVue/blob/master/docs/AwakerViews.jpg "Wireframe views")
  *
+ * ### Color schema
+ *
+ * #### Primary
+ * ![primary](https://github.com/karatekaneen/ionicVue/blob/master/docs/primary.png "primary color")
+ *
+ * #### Secondary
+ * ![secondary](https://github.com/karatekaneen/ionicVue/blob/master/docs/secondary.png "secondary color")
+ *
+ * #### Background
+ * ![Background](https://github.com/karatekaneen/ionicVue/blob/master/docs/Background.png "Background color")
+ *
+ * #### Accent
+ * ![Accent](https://github.com/karatekaneen/ionicVue/blob/master/docs/Accent.png "Accent color")
+ *
+ * #### Info
+ * ![info](https://github.com/karatekaneen/ionicVue/blob/master/docs/info.png "info color")
+ *
+ * #### Warning
+ * ![Warning](https://github.com/karatekaneen/ionicVue/blob/master/docs/Warning.png "Warning color")
+ *
+ * #### Success
+ * ![Success](https://github.com/karatekaneen/ionicVue/blob/master/docs/Success.png "Success color")
+ *
+ * #### Error
+ * ![Error](https://github.com/karatekaneen/ionicVue/blob/master/docs/Error.png "Error color")
+ *
+ *
  * # Usage
  * ## Installation for android
  *
