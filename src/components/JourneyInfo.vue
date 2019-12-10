@@ -17,7 +17,7 @@
 		<div>
 			<span class="primary--text title">{{ progress.timeElapsed }}</span>
 		</div>
-		
+
 		<!-- Dialog to remove the journey -->
 		<v-dialog v-model="dialog" width="300">
 			<template v-slot:activator="{ on }">
