@@ -1,13 +1,13 @@
 import { createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex'
-import createStore from '../../../src/store/index'
-import mutations from '../../../src/store/mutations'
-import actions from '../../../src/store/actions'
-import _state from '../../../src/store/state'
+import createStore from '../index'
+import mutations from '../mutations'
+import actions from '../actions'
+import _state from '../state'
 import { Plugins } from '@capacitor/core'
-import Coordinate from '../../../src/models/Coordinate'
-import Journey from '../../../src/models/Journey'
-import Notification from '../../../src/models/Notification'
+import Coordinate from '../../models/Coordinate'
+import Journey from '../../models/Journey'
+import Notification from '../../models/Notification'
 
 const localVue = createLocalVue()
 

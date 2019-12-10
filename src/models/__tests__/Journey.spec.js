@@ -1,5 +1,5 @@
-import Journey from '../../../src/models/Journey'
-import Coordinate from '../../../src/models/Coordinate'
+import Journey from '../Journey'
+import Coordinate from '../Coordinate'
 
 const point1 = new Coordinate({
 	coords: {

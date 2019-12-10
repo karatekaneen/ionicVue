@@ -1,5 +1,5 @@
-import DestinationSelector from '../../../src/components/DestinationSelector.vue'
-import Coordinate from '../../../src/models/Coordinate'
+import DestinationSelector from '../DestinationSelector.vue'
+import Coordinate from '../../models/Coordinate'
 import { shallowMount } from '@vue/test-utils'
 import Vue from 'vue'
 import Vuex from 'vuex'

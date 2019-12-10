@@ -1,4 +1,4 @@
-import Notification from '../../../src/models/Notification'
+import Notification from '../Notification'
 
 it('has a working constructor', () => {
 	const n = new Notification()

@@ -1,4 +1,4 @@
-import Coordinate from '../../../src/models/Coordinate'
+import Coordinate from '../Coordinate'
 
 it('has a working constructor', () => {
 	const testResp = {
