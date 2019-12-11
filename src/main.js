@@ -73,6 +73,9 @@ const store = createStore({
  *
  * ![wireframe](https://github.com/karatekaneen/ionicVue/blob/master/docs/AwakerViews.jpg "Wireframe views")
  *
+ * ### Navigation
+ * ![Navigation](https://github.com/karatekaneen/ionicVue/blob/master/docs/Awake_Navigation.jpg "Navigation chart")
+ *
  * ### Color schema
  *
  * Not all are being used but all selected are shown below.
