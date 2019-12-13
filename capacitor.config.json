@@ -7,8 +7,8 @@
 	"cordova": {},
 	"plugins": {
 		"SplashScreen": {
-			"backgroundColor": "#ffffffff",
-			"showSpinner": true
+			"backgroundColor": "#2B424E",
+			"showSpinner": false
 		}
 	}
 }

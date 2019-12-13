@@ -58,7 +58,7 @@
 		</div>
 
 		<div class="d-flex">
-			<v-btn fab outlined>
+			<v-btn to="/" fab outlined>
 				<v-icon>close</v-icon>
 			</v-btn>
 			<v-spacer></v-spacer>
